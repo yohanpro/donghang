@@ -1,0 +1,118 @@
+
+:root {
+  --aqua-blue: #01b9e0;
+  --neon-blue: #22ccf0;
+  --deep-sky-blue: #0285ff;
+  --very-light-blue: #e9edf0;
+  --tealish: #1ebeae;
+  --jade: #1e9694;
+  --tealish-light: rgba(30, 190, 174, 0.37);
+  --dark-teal: #014f4e;
+  --dark-grey: #24252a;
+  --black-three: #010101;
+  --black: #000;
+  --charcoal-grey: #2d343b;
+  --brownish-grey: #666666;
+  --blue-grey: #858b91;
+  --brownish-grey-three: #999999;
+  --brown-grey: #999999;
+  --very-light-pink: #e7e7e7;
+  --alabaster: #f9f9f9;
+  --white: #fff;
+  --strawberry: #f72f47;
+  --very-light-pink: #e7e7e7;
+  --rosy-pink: #f86884;
+  --dark-peach: #eb8156;
+
+  --bottom-bar-height: 3.5rem;
+  --text-area-height: 2.5rem;
+  --header-height: 3.5rem;
+
+  --pulse-before: 0;
+  --pulse: 1.2;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: $font-size-root;
+
+  @media only screen and (min-width: $tablet) {
+    font-size: 10px;
+  }
+}
+
+body {
+  font-weight: 400;
+  line-height: 1.6;
+  font-family: 'Noto Sans KR', sans-serif;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  font-size: 1rem;
+  user-select: none;
+}
+
+button {
+  text-align: unset;
+}
+
+input:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+input[type="text"] {
+  background-color: #fff;
+  border: 1px solid $very-light-pink;
+  border-radius: 4px;
+  width: 100%;
+  padding: 10px 12px;
+
+  &::placeholder {
+    color: #010101;
+    opacity: .34;
+  }
+}
+
+textarea {
+  border: 1px solid $very-light-pink;
+  border-radius: 4px;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  padding: 6px .75rem;
+  font-size: 14px;
+
+  &::placeholder {
+    color: #010101;
+    opacity: 0.34;
+  }
+}
+
+svg {
+  -webkit-transform: translateZ(0) scale(1.0, 1.0);
+  transform: translateZ(0) scale(1.0, 1.0);
+}
+
+.howdoyoudo{
+  width: 100%;
+}
