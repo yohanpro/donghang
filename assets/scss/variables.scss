@@ -1,5 +1,20 @@
 @import './variables/colors.scss';
 @import './variables/breakpoint.scss';
 
-$font-size-root: 10px;
+$seafoam-blue: #61c3e1;
+$deep-sky-blue: #0285ff;
+$very-light-pink: #d8d8d8;
+$border-gray: 1px solid #d8d8d8;
+$brown-grey: #aaa;
+$greyish-brown: #444;
+$greeny-blue: #3eb7b0;
+$salmon: #ff6a67;
 
+$font-size-root: 10px;
+$btn-font-sizes: (
+  'x-small': 0.7rem,
+  'small': 0.8rem,
+  'default': 1rem,
+  'large': 1.5rem,
+  'x-large': 2rem,
+);

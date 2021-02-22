@@ -45,11 +45,6 @@
 
 html {
   box-sizing: border-box;
-  font-size: $font-size-root;
-
-  @media only screen and (min-width: $tablet) {
-    font-size: 10px;
-  }
 }
 
 body {
@@ -80,18 +75,6 @@ button:focus {
   outline: none;
 }
 
-input[type="text"] {
-  background-color: #fff;
-  border: 1px solid $very-light-pink;
-  border-radius: 4px;
-  width: 100%;
-  padding: 10px 12px;
-
-  &::placeholder {
-    color: #010101;
-    opacity: .34;
-  }
-}
 
 textarea {
   border: 1px solid $very-light-pink;
@@ -113,6 +96,3 @@ svg {
   transform: translateZ(0) scale(1.0, 1.0);
 }
 
-.howdoyoudo{
-  width: 100%;
-}
