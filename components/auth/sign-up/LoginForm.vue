@@ -15,6 +15,7 @@
       :rules="passwordRules"
       label="Password"
       type="password"
+      autocomplete="on"
       required
     />
 
