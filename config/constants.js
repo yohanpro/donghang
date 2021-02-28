@@ -1,24 +1,24 @@
 export const SIGN_UP_FIELD = [
   {
-    label: 'Name',
+    label: '이름',
     type: 'text',
     fields: [
       {
         name: 'last_name',
-        placeholder: 'Last Name',
+        placeholder: '성',
         regex: '^[a-zA-Z가-힣]{1,30}$',
       },
       {
         name: 'first_name',
-        placeholder: 'First Name',
+        placeholder: '이름',
         regex: '^[a-zA-Z가-힣]{1,30}$',
       },
     ],
     required: true,
   },
   {
-    label: 'Nickname',
-    type: 'nickname',
+    label: '닉네임',
+    type: 'text',
     fields: [
       {
         name: 'nick_name',
@@ -30,7 +30,7 @@ export const SIGN_UP_FIELD = [
     required: true,
   },
   {
-    label: 'Email',
+    label: '이메일 주소',
     type: 'text',
     regex: [''],
     fields: [
@@ -43,7 +43,7 @@ export const SIGN_UP_FIELD = [
     required: true,
   },
   {
-    label: 'Phone',
+    label: '전화번호',
     type: 'text',
     fields: [
       {
@@ -55,7 +55,7 @@ export const SIGN_UP_FIELD = [
     required: true,
   },
   {
-    label: 'gender',
+    label: '성별',
     type: 'radio',
     placeholder: ['Male', 'Female'],
     fields: [
@@ -75,7 +75,7 @@ export const SIGN_UP_FIELD = [
     required: true,
   },
   {
-    label: 'Birthday',
+    label: '생년월일',
     type: 'select',
     placeholder: ['Year', 'Month', 'Day'],
     fields: [
@@ -96,17 +96,5 @@ export const SIGN_UP_FIELD = [
       },
     ],
     required: true,
-  },
-  {
-    label: 'Nationality',
-    type: 'country',
-    placeholder: ['Please Select Nationality'],
-    fields: [
-      {
-        name: 'country',
-        placeholder: 'Please Select Nationality',
-        regex: '',
-      },
-    ],
   },
 ]
