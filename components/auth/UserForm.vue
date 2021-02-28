@@ -5,34 +5,32 @@
       is-back-button
       has-right-custom-button
     />
-
-    <div class="field-container">
+    <div
+      v-for="fieldEntity in signUpField"
+      :key="fieldEntity.label"
+      class="field-container"
+    >
       <div class="field-label">
-        이름
-        <div class="required">
+        {{ fieldEntity.label }}
+        <div
+          v-show="fieldEntity.required"
+          class="required"
+        >
           *
         </div>
       </div>
       <div class="field-input-wrapper">
-        <div class="field-input">
+        <div
+          v-for="field in fieldEntity.fields"
+          :key="field.name"
+          class="field-input"
+        >
           <input
-            type="text"
-            placeholder="성"
+            :type="fieldEntity.type"
+            :placeholder="field.placeholder"
           >
           <div
-            v-show="checkIsValid()"
-            class="invalid-message"
-          >
-            에러메시지
-          </div>
-        </div>
-        <div class="field-input">
-          <input
-            type="text"
-            placeholder="이름"
-          >
-          <div
-            v-show="checkIsValid()"
+            v-show="!checkIsValid(field)"
             class="invalid-message"
           >
             에러메시지
@@ -56,7 +54,7 @@ export default {
     }
   },
   methods: {
-    checkIsValid (value) {
+    checkIsValid (field) {
       return true
     },
   },
