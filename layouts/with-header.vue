@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <v-app>
     <nuxt class="with-title-header" />
-  </div>
+  </v-app>
 </template>
 
 <script>
@@ -23,6 +23,6 @@ export default {
   }
 }
 .with-title-header {
-  margin-top: 3.5rem;
+  margin-top: 6rem;
 }
 </style>

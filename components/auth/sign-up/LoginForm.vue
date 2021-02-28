@@ -50,7 +50,7 @@ export default {
   }),
   methods: {
     submit () {
-      console.log('submit')
+
     },
   },
 }

@@ -10,7 +10,7 @@
           :is-checked="isAllChecked"
           @change="checkAll()"
         />
-        <p @change="checkAll()">
+        <p @click="checkAll()">
           모두 동의하기
         </p>
       </div>
@@ -107,7 +107,7 @@ export default {
   &__agree-all {
     width: 100%;
     height: 65px;
-    border-bottom: var(--border-bottom-light-gray);
+    border-bottom: var(--border-light-gray);
     display: flex;
     align-items: center;
     padding: 1rem 2rem;
