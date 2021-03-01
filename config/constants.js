@@ -18,11 +18,11 @@ export const SIGN_UP_FIELD = [
   },
   {
     label: '닉네임',
-    type: 'text',
+    type: 'nickname',
     fields: [
       {
         name: 'nick_name',
-        placeholder: 'Please Enter Nickname',
+        placeholder: '닉네임을 입력해주세요',
         // eslint-disable-next-line no-useless-escape
         regex: '^[a-zA-Z0-9가-힣ㄱ-ㅎ!#$%*~_]{1,20}$',
       },
@@ -47,7 +47,7 @@ export const SIGN_UP_FIELD = [
     type: 'text',
     fields: [
       {
-        name: 'encrypted_phone',
+        name: 'phone',
         placeholder: 'Phone',
         regex: '^0([0-9]{9,20})$',
       },

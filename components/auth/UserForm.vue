@@ -21,14 +21,37 @@
       </div>
       <div class="field-input-wrapper">
         <div
-          v-for="field in fieldEntity.fields"
-          :key="field.name"
+          v-for="(field, index) in fieldEntity.fields"
+          :key="index"
           class="field-input"
         >
           <input
+            v-if="fieldEntity.type === 'text'"
             :type="fieldEntity.type"
             :placeholder="field.placeholder"
+            @input="handleInputChange($event.target.value, field)"
+            @keyup="validateInput(field)"
           >
+          <div
+            v-else-if="fieldEntity.type == 'nickname'"
+          >
+            <div class="field-nickname">
+              <input
+                type="text"
+                :placeholder="fieldEntity.fields[0].placeholder"
+              >
+              <button
+                class="nickname__check-button"
+                @click="checkNickname"
+              >
+                중복확인
+              </button>
+            </div>
+            <div class="hint-message">
+              한글/영문/숫자/특수문자 (! # $ % * _ ~) 만 사용 가능합니다.
+            </div>
+          </div>
+
           <div
             v-show="!checkIsValid(field)"
             class="invalid-message"
@@ -51,17 +74,53 @@ export default {
   data () {
     return {
       signUpField: SIGN_UP_FIELD,
+      userInfo: {
+        first_name: { isDirty: null, isValid: null },
+        last_name: { isDirty: null, isValid: null },
+        nickname: { isDirty: null, isValid: null },
+        email: { isDirt: null, isValid: null },
+        phone: { isDirty: null, isValid: null },
+        gender: { isDirty: null, isValid: null },
+        year: { isDirty: null, isValid: null },
+        month: { isDirt: null, isValid: null },
+        day: { isDirty: null, isValid: null },
+      },
     }
   },
   methods: {
-    checkIsValid (field) {
-      return true
+    checkIsValid ({ name }) {
+      if (!this.userInfo[name]) { return false }
+
+      const { isDirty, isValid } = this.userInfo[name]
+
+      return !isDirty || isValid
+    },
+    checkNickname () {
+
+    },
+    handleInputChange (value, field, el) {
+      this.userInfo[field.name].isDirty = true
+      this.userInfo[field.name].value = value
+    },
+    validateInput (field) {
+      const { name, regex } = field
+
+      const targetValue = this.userInfo[name]
+      const reg = new RegExp(regex)
+      const res = reg.test(targetValue)
+
+      this.userInfo[name].isValid = res
     },
   },
 }
 </script>
 
 <style lang="scss" scoped>
+.hint-message {
+  color: #ccc;
+  font-size: 1.2rem;
+  margin: 0 0.75rem;
+}
 .user-form {
   display: flex;
   flex-direction: column;
@@ -85,8 +144,23 @@ export default {
 }
 .field-input-wrapper {
   display: flex;
-  align-items: center;
+  // align-items: center;
   margin: 0 0.6rem;
+}
+.field-nickname {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+}
+.nickname__check-button {
+  font-size: 1.3rem;
+  border: var(--border-light-gray);
+  border-radius: 4px;
+  flex-basis: 25%;
+  text-align: center;
+  margin-left: 1rem;
+  background-color: $main-theme-color;
+  color: $main-font-color;
 }
 .field-input {
   flex-grow: 1;
