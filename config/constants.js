@@ -24,7 +24,7 @@ export const SIGN_UP_FIELD = [
         name: 'nick_name',
         placeholder: '닉네임을 입력해주세요',
         // eslint-disable-next-line no-useless-escape
-        regex: '^[a-zA-Z0-9가-힣ㄱ-ㅎ!#$%*~_]{1,20}$',
+        regex: '^[a-zA-Z0-9가-힣ㄱ-ㅎ_]{1,20}$',
       },
     ],
     required: true,
