@@ -32,12 +32,11 @@ export const SIGN_UP_FIELD = [
   {
     label: '이메일 주소',
     type: 'text',
-    regex: [''],
     fields: [
       {
-        name: 'encrypted_email',
+        name: 'email',
         placeholder: 'Email',
-        regex: '',
+        regex: '^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$',
       },
     ],
     required: true,
@@ -48,7 +47,7 @@ export const SIGN_UP_FIELD = [
     fields: [
       {
         name: 'phone',
-        placeholder: 'Phone',
+        placeholder: '- 없이 입력',
         regex: '^0([0-9]{9,20})$',
       },
     ],
@@ -61,13 +60,13 @@ export const SIGN_UP_FIELD = [
     fields: [
       {
         name: 'gender',
-        placeholder: 'Male',
+        placeholder: '남자',
         value: 'male',
         regex: '',
       },
       {
         name: 'gender',
-        placeholder: 'Female',
+        placeholder: '여자',
         value: 'female',
         regex: '',
       },

@@ -20,7 +20,7 @@
         </div>
       </div>
       <div
-        v-if="fieldEntity.type !=='nickname'"
+        v-if="fieldEntity.type !== 'nickname'"
         class="field-input-wrapper"
       >
         <div
@@ -54,7 +54,9 @@
             :placeholder="fieldEntity.fields[0].placeholder"
             @keyup="validateInput(fieldEntity.fields[0])"
             @focus="handleFocus(fieldEntity.fields[0].name)"
-            @input="handleInputChange($event.target.value, fieldEntity.fields[0])"
+            @input="
+              handleInputChange($event.target.value, fieldEntity.fields[0])
+            "
           >
           <button
             class="nickname__check-button"
@@ -74,6 +76,13 @@
           {{ nicknameErrorMessage }}
         </div>
       </div>
+      <radio-input
+        v-else-if="fieldEntity.type === 'radio'"
+        :is-invalid="false"
+        :select-array="fieldEntity.fields"
+        :selected-value="userInfo.gender.value"
+        @inputSelect="handleRadioInputChange($event)"
+      />
     </div>
   </div>
 </template>
@@ -85,6 +94,7 @@ export default {
   name: 'UserForm',
   components: {
     BaseHeader: () => import('~/components/common/header/BaseHeader'),
+    RadioInput: () => import('~/components/common/inputs/RadioInput'),
   },
   data () {
     return {
@@ -112,7 +122,7 @@ export default {
   computed: {
     isNicknameValid () {
       if (!this.userInfo.nick_name) {
-        return true
+        return false
       }
       const { isDirty, isValid, isChecked } = this.userInfo.nick_name
       return !isDirty || (isValid && isChecked)
@@ -126,7 +136,10 @@ export default {
       const { isDirty, isValid } = this.userInfo[name]
       return !isDirty || isValid
     },
-
+    handleRadioInputChange (selected) {
+      this.userInfo[selected.name].value = selected.value
+      this.userInfo[selected.name].isDirty = this.userInfo[selected.name].isValid = true
+    },
     async handleNicknameCheck () {
       if (!this.userInfo.nick_name) {
         return true
@@ -134,7 +147,6 @@ export default {
       const isNickNameAvailable = await checkNickname(
         this.userInfo.nick_name.value,
       )
-
       if (isNickNameAvailable) {
         this.userInfo.nick_name.isChecked = true
         this.userInfo.nick_name.isDirty = false
@@ -155,11 +167,13 @@ export default {
       this.userInfo[name].isDirty = true
     },
     getErrorMessage (name) {
-      if (name === 'last_name' || name === 'first_name') {
-        return this.nameErrorMessage
-      }
-      if (name === 'nick_name') {
-        return this.nicknameErrorMessage
+      switch (name) {
+        case 'last_name' || 'first_name':
+          return this.nameErrorMessage
+        case 'nick_name':
+          return this.nicknameErrorMessage
+        default:
+          return '형식이 올바르지 않습니다'
       }
     },
   },
@@ -171,7 +185,7 @@ export default {
   color: #ccc;
   font-size: 1.2rem;
   margin: 0 0.75rem;
-  &-nickname{
+  &-nickname {
     margin: 0 1.2rem;
   }
 }
@@ -180,7 +194,7 @@ export default {
   color: red;
   margin: 0.2rem 0.5rem;
 
-  &-nickname{
+  &-nickname {
     margin: 0.2rem 1.2rem;
   }
 }
@@ -214,7 +228,6 @@ export default {
   display: flex;
   align-items: stretch;
   margin: 0 1.2rem;
-
 }
 .nickname__check-button {
   font-size: 1.3rem;
@@ -241,5 +254,4 @@ export default {
     }
   }
 }
-
 </style>
