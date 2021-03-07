@@ -61,6 +61,7 @@ button {
   flex: 1;
   color: #999;
   text-align: center;
+  font-size: 1.4rem;
 }
 
 .invalid {

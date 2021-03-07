@@ -38,6 +38,18 @@
             @focus="handleFocus(field.name)"
             @keydown.space.prevent
           >
+          <div v-else-if="fieldEntity.type === 'select'">
+            <SelectInput
+              :place-holder="field.placeholder"
+              :select-array="dateArray[index]"
+              :selected-value="userInfo[field.name].value"
+              :is-invalid="!checkIsValid(field)"
+              :is-disabled="
+                field.name === 'day' && !isBirthdayYearAndMonthSelected
+              "
+              @inputSelect="handleInputChange($event, field)"
+            />
+          </div>
           <div
             v-show="!checkIsValid(field)"
             class="invalid-message"
@@ -84,23 +96,32 @@
         @inputSelect="handleRadioInputChange($event)"
       />
     </div>
+    <BottomButton
+      button-text="회원가입하기"
+      button-width="95%"
+    />
   </div>
 </template>
 
 <script>
 import { SIGN_UP_FIELD } from '~/config/constants'
 import { checkNickname } from '~/config/dummy'
+import { createDateArray } from '~/utils/helplers'
+
 export default {
   name: 'UserForm',
   components: {
     BaseHeader: () => import('~/components/common/header/BaseHeader'),
     RadioInput: () => import('~/components/common/inputs/RadioInput'),
+    SelectInput: () => import('~/components/common/inputs/SelectInput'),
+    BottomButton: () => import('~/components/common/buttons/BottomButton'),
   },
   data () {
     return {
       signUpField: SIGN_UP_FIELD,
       nameErrorMessage: '1~30자, 특수문자 제외',
       nicknameErrorMessage: '중복확인 체크를 해주세요',
+      dateArray: [],
       userInfo: {
         first_name: { isDirty: null, isValid: null, isRequired: true },
         last_name: { isDirty: null, isValid: null, isRequired: true },
@@ -113,9 +134,9 @@ export default {
         email: { isDirty: null, isValid: null, isRequired: true },
         phone: { isDirty: null, isValid: null, isRequired: true },
         gender: { isDirty: null, isValid: null, isRequired: true },
-        year: { isDirty: null, isValid: null, isRequired: true },
-        month: { isDirty: null, isValid: null, isRequired: true },
-        day: { isDirty: null, isValid: null, isRequired: true },
+        year: { isDirty: null, isValid: null, isRequired: true, value: null },
+        month: { isDirty: null, isValid: null, isRequired: true, value: null },
+        day: { isDirty: null, isValid: null, isRequired: true, value: null },
       },
     }
   },
@@ -127,6 +148,16 @@ export default {
       const { isDirty, isValid, isChecked } = this.userInfo.nick_name
       return !isDirty || (isValid && isChecked)
     },
+    isBirthdayYearAndMonthSelected () {
+      return !!(this.userInfo.year.value && this.userInfo.month.value)
+    },
+  },
+  created () {
+    const thisYear = new Date().getFullYear()
+    const yearArray = createDateArray(thisYear, thisYear - 120, -1)
+    const monthArray = createDateArray(1, 12, 1)
+    const dayArray = createDateArray(1, 31, 1)
+    this.dateArray = [yearArray, monthArray, dayArray]
   },
   methods: {
     checkIsValid ({ name }) {
@@ -138,7 +169,9 @@ export default {
     },
     handleRadioInputChange (selected) {
       this.userInfo[selected.name].value = selected.value
-      this.userInfo[selected.name].isDirty = this.userInfo[selected.name].isValid = true
+      this.userInfo[selected.name].isDirty = this.userInfo[
+        selected.name
+      ].isValid = true
     },
     async handleNicknameCheck () {
       if (!this.userInfo.nick_name) {
@@ -153,6 +186,7 @@ export default {
       }
     },
     handleInputChange (value, field) {
+      if (!field.regex) { this.userInfo[field.name].isValid = true }
       this.userInfo[field.name].isDirty = true
       this.userInfo[field.name].value = value
     },
@@ -205,6 +239,7 @@ export default {
   max-width: 100%;
   position: relative;
   flex: 1 1 auto;
+  padding: 0 0.5rem;
 }
 .field-container {
   margin: 1rem 0;

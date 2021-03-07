@@ -80,17 +80,17 @@ export const SIGN_UP_FIELD = [
     fields: [
       {
         name: 'year',
-        placeholder: 'Year',
+        placeholder: '연',
         regex: '',
       },
       {
         name: 'month',
-        placeholder: 'Month',
+        placeholder: '월',
         regex: '',
       },
       {
         name: 'day',
-        placeholder: 'Day',
+        placeholder: '일',
         regex: '',
       },
     ],
