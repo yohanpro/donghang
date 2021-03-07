@@ -30,7 +30,9 @@
             class="terms__link-arrow"
             src="~/assets/images/icons/arrow-right-light.svg"
             alt="Go to Terms Arrow"
-            @click.self="$router.push(`/auth/sign-up/agree-to-terms/${terms.index}`)"
+            @click.self="
+              $router.push(`/auth/sign-up/agree-to-terms/${terms.index}`)
+            "
           >
         </div>
       </div>
@@ -68,7 +70,9 @@ export default {
       return allChecked
     },
     isAllRequiredFieldChecked () {
-      return this.termsAndConditions.every(terms => terms.required && terms.status)
+      return this.termsAndConditions.every(
+        terms => terms.required && terms.status,
+      )
     },
   },
   methods: {
@@ -76,7 +80,9 @@ export default {
       this.$router.push('/auth/sign-up/form')
     },
     checkCondition (itemIndex) {
-      const targetCondition = this.termsAndConditions.find(terms => terms.index === itemIndex)
+      const targetCondition = this.termsAndConditions.find(
+        terms => terms.index === itemIndex,
+      )
       targetCondition.status = !targetCondition.status
     },
     checkAll () {
@@ -141,7 +147,7 @@ export default {
           margin-right: 0.5rem;
         }
       }
-      .terms__link-arrow{
+      .terms__link-arrow {
         width: 30px;
         margin-left: auto;
       }
