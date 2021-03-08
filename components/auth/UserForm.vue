@@ -99,11 +99,13 @@
     <BottomButton
       button-text="회원가입하기"
       button-width="95%"
+      :is-disabled="!isAllValid"
     />
   </div>
 </template>
 
 <script>
+import { getDaysInMonth } from 'date-fns'
 import { SIGN_UP_FIELD } from '~/config/constants'
 import { checkNickname } from '~/config/dummy'
 import { createDateArray } from '~/utils/helplers'
@@ -151,6 +153,24 @@ export default {
     isBirthdayYearAndMonthSelected () {
       return !!(this.userInfo.year.value && this.userInfo.month.value)
     },
+    isNicknameCheckNeeded () {
+      if (!this.userInfo.nick_name) {
+        return false
+      }
+      const { isValid, isChecked, value } = this.userInfo.nick_name
+      return value.length && isValid && !isChecked
+    },
+    isAllValid () {
+      const isAllFilled = Object.keys(this.userInfo)
+        .map((key) => {
+          const { isValid, isDirty, isRequired } = this.userInfo[key]
+          return (
+            (isRequired && isValid) || (!isRequired && (!isDirty || isValid))
+          )
+        })
+        .every(valid => valid)
+      return isAllFilled && !this.isNicknameCheckNeeded
+    },
   },
   created () {
     const thisYear = new Date().getFullYear()
@@ -186,9 +206,25 @@ export default {
       }
     },
     handleInputChange (value, field) {
-      if (!field.regex) { this.userInfo[field.name].isValid = true }
+      if (!field.regex) {
+        this.userInfo[field.name].isValid = true
+      }
       this.userInfo[field.name].isDirty = true
       this.userInfo[field.name].value = value
+
+      if (field.name === 'month' || field.name === 'year') {
+        this.updateDayArray(field.name)
+      }
+    },
+    updateDayArray (field) {
+      const { month, year } = this.userInfo
+      const lastDayOfMonth = getDaysInMonth(new Date(year.value, month.value - 1))
+      const dayArray = createDateArray(1, lastDayOfMonth, 1)
+      this.dateArray[2] = dayArray
+      if (field === 'month') {
+        this.userInfo.day.value = '1'
+        this.userInfo.day.isValid = true
+      }
     },
     validateInput (field) {
       const { name, regex } = field
@@ -200,6 +236,7 @@ export default {
     handleFocus (name) {
       this.userInfo[name].isDirty = true
     },
+
     getErrorMessage (name) {
       switch (name) {
         case 'last_name' || 'first_name':
@@ -209,6 +246,10 @@ export default {
         default:
           return '형식이 올바르지 않습니다'
       }
+    },
+    handleSubmit () {
+      console.log('submittted')
+      this.$router.push('/auth/sign-up/welcome')
     },
   },
 }

@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "date-fns": "^2.19.0",
     "nuxt": "^2.14.12"
   },
   "devDependencies": {
