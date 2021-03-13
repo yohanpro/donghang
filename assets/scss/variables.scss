@@ -19,6 +19,9 @@ $btn-font-sizes: (
   'x-large': 2rem,
 );
 
-.v-application p{
+.v-application {
+  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+}
+.v-application p {
   margin-bottom: unset;
 }
