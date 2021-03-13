@@ -57,6 +57,7 @@ export default {
   bottom: 0;
   left: 0;
   border-top: var(--border-light-gray);
+  background-color: #fff;
 }
 .menu-item-container {
   width: 100%;
