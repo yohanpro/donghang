@@ -34,6 +34,8 @@
   --pulse: 1.2;
 }
 
+@import url('https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css');
+
 * {
   margin: 0;
   padding: 0;
@@ -52,7 +54,7 @@ html {
 body {
   font-weight: 400;
   line-height: 1.6;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
   min-height: 100vh;
   background: #fbfbfb;
 }
