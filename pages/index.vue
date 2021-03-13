@@ -5,12 +5,12 @@
 </template>
 
 <script>
-
 export default {
-
+  created () {
+    this.$router.push('/main')
+  },
 }
 </script>
 
 <style scoped>
-
 </style>
