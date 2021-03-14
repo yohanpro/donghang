@@ -1,5 +1,8 @@
 <template>
-  <article class="article">
+  <article
+    class="article"
+    @click="goToArticleDetail"
+  >
     <p class="article__title">
       {{ articleObj.title }}
     </p>
@@ -13,6 +16,12 @@ export default {
     articleObj: {
       type: Object,
       default: () => {},
+    },
+  },
+  methods: {
+    goToArticleDetail () {
+      const { country, id } = this.articleObj
+      this.$router.push(`/main/${country}/${id}`)
     },
   },
 }
