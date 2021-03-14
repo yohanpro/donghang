@@ -1,21 +1,21 @@
 <template>
-  <div>
+  <div class="main-detail">
     <base-header
       header-title="동행 찾기"
       is-back-button
     />
-    <MainArticles />
+    디테일 페이지입니당
     <BottomBar />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Main',
+  name: 'MainDetail',
   components: {
-    BaseHeader: () => import('~/components/common/header/BaseHeader'),
     BottomBar: () => import('~/components/common/bottom-bar'),
-    MainArticles: () => import('./MainArticles'),
+    BaseHeader: () => import('~/components/common/header/BaseHeader'),
   },
 }
+
 </script>
