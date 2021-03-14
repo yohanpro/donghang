@@ -3,7 +3,7 @@
     <Filters />
     <ArticleEntity
       v-for="article in articles"
-      :key="article.index"
+      :key="article.id"
       :article-obj="article"
     />
   </section>
@@ -21,35 +21,47 @@ export default {
     return {
       articles: [
         {
-          index: 1,
+          id: 1,
           title: '여행 같이가요',
+          country: 1,
         },
         {
-          index: 2,
+          id: 2,
           title: '밥 같이 먹어요',
+          country: 1,
         },
         {
-          index: 3,
+          id: 3,
           title: '숙소 같이 써요',
+          country: 1,
         },
         {
-          index: 4,
+          id: 4,
           title: '여행 같이가요',
+          country: 1,
         },
         {
-          index: 5,
+          id: 5,
           title: '여행 같이가요',
+          country: 1,
         },
         {
-          index: 6,
+          id: 6,
           title: '여행 같이가요',
+          country: 1,
         },
         {
-          index: 7,
+          id: 7,
           title: '여행 같이가요',
+          country: 1,
         },
       ],
     }
+  },
+  computed: {
+    countryId () {
+      return this.$route.params.countryId
+    },
   },
 }
 </script>

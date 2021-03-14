@@ -4,7 +4,7 @@
 <script>
 
 export default {
-  name: 'MainPage',
+  name: 'MainArticlePage',
   components: {
     Main: () => import('~/components/main'),
   },
