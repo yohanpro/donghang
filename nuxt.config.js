@@ -1,12 +1,25 @@
 import colors from 'vuetify/es5/util/colors'
+import dotenv from 'dotenv'
 
+let path
+
+switch (process.env.NODE_ENV) {
+  case 'production':
+    path = `${__dirname}/config/env/production.env`
+    break
+  case 'development':
+    path = `${__dirname}/config/env/development.env`
+    break
+
+  default:
+    break
+}
+dotenv.config({ path })
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
-
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
-
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - myTrip',
@@ -49,8 +62,14 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
-
+  modules: [
+    '@nuxtjs/dotenv',
+  ],
+  env: {
+    ENV: process.env.NODE_ENV,
+    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+    GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY,
+  },
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/scss/variables.scss'],
@@ -70,7 +89,6 @@ export default {
       },
     },
   },
-
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     loaders: {

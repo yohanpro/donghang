@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "NODE_ENV=development nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
@@ -12,8 +12,10 @@
     "test": "jest"
   },
   "dependencies": {
+    "@nuxtjs/dotenv": "^1.4.1",
     "core-js": "^3.8.3",
     "date-fns": "^2.19.0",
+    "dotenv": "^8.2.0",
     "nuxt": "^2.14.12"
   },
   "devDependencies": {
