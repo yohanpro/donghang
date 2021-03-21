@@ -8,9 +8,11 @@
       <p>{{ getDateFormat(detailObj.meetingTime) }}</p>
     </div>
     <div class="contents-area__address">
-      <p>장소</p>
+      <p>주소</p>
       <p>{{ detailObj.address }}</p>
     </div>
+
+    <Location :lat-lng="detailObj.position" />
   </section>
 </template>
 
@@ -20,6 +22,9 @@ import locale from 'date-fns/locale/ko'
 
 export default {
   name: 'ContentsArea',
+  components: {
+    Location: () => import('./Location'),
+  },
   props: {
     detailObj: {
       type: Object,

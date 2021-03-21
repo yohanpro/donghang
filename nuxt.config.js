@@ -10,12 +10,13 @@ switch (process.env.NODE_ENV) {
   case 'development':
     path = `${__dirname}/config/env/development.env`
     break
-
   default:
     break
 }
 dotenv.config({ path })
+
 export default {
+  mode: 'spa',
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
   // Target: https://go.nuxtjs.dev/config-target
@@ -40,6 +41,11 @@ export default {
         rel: 'stylesheet',
         href:
           'https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,600,700,900&display=swap&subset=korean',
+      },
+    ],
+    script: [
+      {
+        src: `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API_KEY}&libraries=&v=weekly`,
       },
     ],
   },
