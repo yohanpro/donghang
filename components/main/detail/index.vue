@@ -4,10 +4,19 @@
       :header-title="detailObj.title"
       is-back-button
     />
-    <p class="detail__cdt">
-      <span v-show="detailObj.isKKleOL">끌올</span>
-      {{ detailObj.createdTime }}
-    </p>
+    <div class="detail__header">
+      <p class="detail__cdt">
+        <span v-show="detailObj.isKKleOL">끌올</span>
+        {{ detailObj.createdTime }}
+      </p>
+      <div class="detail__header__view-count">
+        <img
+          src="~/assets/images/icons/view.svg"
+          alt="조회수"
+        >
+        <p>{{ detailObj.viewCount }}</p>
+      </div>
+    </div>
     <section class="poster-section">
       <TagArea
         :tags="detailObj.tags"
@@ -23,6 +32,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'MainDetail',
   components: {
@@ -46,18 +56,26 @@ export default {
         isOnlyWoman: true,
         tags: ['식사 같이해요', '같이 놀아요'],
         meetingTime: '2021-07-08T15:39:00+09:00',
-        content: '우리 만나서 놉시다 그런데 사실 저는 조금 낯을 많이 가리는 성격이라 괜찮을련지 모르겠네요 그래도 용기내어서 글을 올립니다. ',
+        content:
+          '우리 만나서 놉시다 그런데 사실 저는 조금 낯을 많이 가리는 성격이라 괜찮을련지 모르겠네요 그래도 용기내어서 글을 올립니다. ',
         address: '236 Gunja-dong, Gwangjin-gu, abcddeff,,,dfd Seoul',
         position: [37.5487074, 127.074697],
+        viewCount: 20,
       },
     }
+  },
+  computed: {
+    ...mapState('auth', ['userId']),
+    isMyPoster () {
+      return true
+    },
   },
 }
 </script>
 
 <style lang="scss" scoped>
- .v-application p {
-  margin-bottom: 1rem;
+.v-application p {
+  margin-bottom: 0;
 }
 .divider {
   width: 90%;
@@ -69,5 +87,25 @@ export default {
   font-weight: bold;
   margin-left: 1rem;
   color: var(--brown-grey);
+}
+.detail__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  > div {
+    display: flex;
+    align-items: center;
+  }
+  &__view-count {
+    margin-right: 1rem;
+    img {
+      width: 18px;
+      margin-right: 0.5rem;
+    }
+    p {
+      font-size: 1.2rem;
+    }
+  }
 }
 </style>
