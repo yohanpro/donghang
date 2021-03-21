@@ -3,6 +3,10 @@
     <div class="contents-area__main-text">
       {{ detailObj.content }}
     </div>
+    <div class="contents-area__time">
+      <p>일시</p>
+      <p>{{ getDateFormat(detailObj.meetingTime) }}</p>
+    </div>
     <div class="contents-area__address">
       <p>장소</p>
       <p>{{ detailObj.address }}</p>
@@ -11,6 +15,9 @@
 </template>
 
 <script>
+import format from 'date-fns/format'
+import locale from 'date-fns/locale/ko'
+
 export default {
   name: 'ContentsArea',
   props: {
@@ -22,6 +29,12 @@ export default {
   data () {
     return {}
   },
+  methods: {
+    getDateFormat (meetingTime) {
+      const date = new Date(meetingTime)
+      return format(date, 'yyyy. MM. dd EEEE hh:mm a', { locale })
+    },
+  },
 }
 </script>
 <style lang="scss" scoped>
@@ -30,6 +43,17 @@ export default {
     width: 100%;
     display: flex;
     flex-direction: column;
+    > div {
+      padding: 1rem 2rem;
+      font-size: 1.6rem;
+      flex-wrap: nowrap;
+      p {
+        font-weight: 300;
+      }
+      p:first-child {
+        font-weight: bold;
+      }
+    }
   }
   &__main-text {
     padding: 1rem 2rem;
@@ -41,13 +65,6 @@ export default {
     padding: 1rem 2rem;
     font-size: 1.6rem;
     flex-wrap: nowrap;
-
-    p {
-      font-weight: 300;
-    }
-    p:first-child {
-      font-weight: bold;
-    }
   }
 }
 </style>
