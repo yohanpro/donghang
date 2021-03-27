@@ -21,6 +21,7 @@
         {{ headerTitle }}
       </h2>
     </div>
+    <slot name="header-right" />
   </v-app-bar>
 </template>
 
