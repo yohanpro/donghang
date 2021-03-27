@@ -3,7 +3,19 @@
     <base-header
       :header-title="detailObj.title"
       is-back-button
-    />
+    >
+      <div
+        slot="header-right"
+        class="participants-status"
+      >
+        <p class="participants-status__title">
+          모집중
+        </p>
+        <p class="participants-status__count">
+          2 / 4
+        </p>
+      </div>
+    </base-header>
     <div class="detail__header">
       <p class="detail__cdt">
         <span v-show="detailObj.isKKleOL">끌올</span>
@@ -76,6 +88,23 @@ export default {
 <style lang="scss" scoped>
 .v-application p {
   margin-bottom: 0;
+}
+.participants-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 5rem;
+  position: absolute;
+  height: 49%;
+  background-color: green;
+  color: #fff;
+  border-top-left-radius: 20%;
+  border-bottom-left-radius: 20%;
+  border-radius: 12px;
+  right: 1rem;
+  &__title {
+    font-weight: bold;
+  }
 }
 .divider {
   width: 90%;
