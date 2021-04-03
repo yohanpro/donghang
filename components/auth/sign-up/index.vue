@@ -4,6 +4,7 @@
     <div class="login-container">
       <LoginForm />
     </div>
+    <SocialLogin />
     <p
       class="signup"
       @click="goToSignUpPage"
@@ -18,6 +19,7 @@ export default {
   name: 'SignUpGate',
   components: {
     LoginForm: () => import('./LoginForm'),
+    SocialLogin: () => import('./SocialLogin'),
   },
   methods: {
     goToSignUpPage () {
@@ -37,7 +39,7 @@ h2 {
 
 .login-container {
   width: 70%;
-  margin: 5rem auto;
+  margin: 3rem auto;
   padding: 1rem 3rem;
 }
 .signup {

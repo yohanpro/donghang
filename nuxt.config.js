@@ -32,8 +32,16 @@ export default {
     },
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1' },
+      {
+        name: 'viewport',
+        content:
+          'width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1',
+      },
       { hid: 'description', name: 'description', content: '' },
+      {
+        name: 'google-signin-client_id',
+        content: process.env.GOOGLE_CLIENT_ID,
+      },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -45,8 +53,14 @@ export default {
     ],
     script: [
       {
+        src: 'https://apis.google.com/js/platform.js?&hl=ko',
+        async: true,
+        defer: true,
+      },
+      {
         src: `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API_KEY}&libraries=&v=weekly`,
       },
+
     ],
   },
 
@@ -68,9 +82,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    '@nuxtjs/dotenv',
-  ],
+  modules: ['@nuxtjs/dotenv'],
   env: {
     ENV: process.env.NODE_ENV,
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
