@@ -1,32 +1,42 @@
 <template>
   <div class="social-login">
-    <div id="google-login-button" />
+    <div
+      id="google-login-button"
+      @click="isGoogleButtonClicked =true"
+    />
   </div>
 </template>
 
-<script lang="ts">
+<script>
+import { mapActions } from 'vuex'
 export default {
   name: 'SocialLogin',
+  data () {
+    return {
+      isGoogleButtonClicked: false,
+    }
+  },
   mounted () {
     this.renderButton()
   },
   methods: {
-    onGoogleSuccess (googleUser) {
-      if (!googleUser) {
-        return
-      }
+    ...mapActions('auth', ['signIn']),
+    async onGoogleSuccess (googleUser) {
+      if (!googleUser || !this.isGoogleButtonClicked) { return }
       const token = googleUser.getAuthResponse().id_token
       const vendor = 'google'
 
-      console.log('token', token)
-      console.log('vendor', vendor)
+      const payload = {
+        token,
+        vendor,
+      }
+      await this.signIn(payload)
     },
     async renderButton () {
       await window.gapi.signin2.render('google-login-button', {
         scope: 'profile email',
         width: 200,
         height: 40,
-        longtitle: true,
         onsuccess: this.onGoogleSuccess,
         onfailure: () => {},
       })
