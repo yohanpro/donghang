@@ -48,6 +48,7 @@ export default {
     width: 100%;
     display: flex;
     flex-direction: column;
+    margin-top: 2rem;
     > div {
       padding: 1rem 2rem;
       font-size: 1.6rem;
@@ -60,11 +61,17 @@ export default {
       }
     }
   }
-  &__main-text {
+  div &__main-text {
     padding: 1rem 2rem;
-    font-size: 1.6rem;
-    white-space: pre-line;
+    font-size: 1.4rem;
     word-break: break-word;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    border: 1px solid #eeeeee;
+    border-radius: 10px;
+    width: 95%;
+    margin: 0 auto;
+    max-height: 30vh;
   }
   &__address {
     padding: 1rem 2rem;

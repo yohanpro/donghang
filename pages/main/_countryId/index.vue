@@ -9,6 +9,7 @@ export default {
     Main: () => import('~/components/main'),
   },
   layout: 'with-header',
+  middleware: 'authenticated',
 }
 
 </script>

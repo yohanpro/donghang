@@ -2,7 +2,7 @@
   <div class="social-login">
     <div
       id="google-login-button"
-      @click="isGoogleButtonClicked =true"
+      @click="isGoogleButtonClicked = true"
     />
   </div>
 </template>
@@ -20,22 +20,36 @@ export default {
     this.renderButton()
   },
   methods: {
-    ...mapActions('auth', ['signIn']),
+    ...mapActions('auth', ['signIn', 'postToken']),
     async onGoogleSuccess (googleUser) {
-      if (!googleUser || !this.isGoogleButtonClicked) { return }
+      if (!googleUser || !this.isGoogleButtonClicked) {
+        return
+      }
       const token = googleUser.getAuthResponse().id_token
       const vendor = 'google'
 
       const payload = {
         token,
-        vendor,
       }
-      await this.signIn(payload)
+      await this.handleLogin(payload, vendor)
+    },
+
+    async handleLogin (payload, vendor) {
+      try {
+        const result = await this.postToken({ payload, vendor })
+
+        const { account_status: accountStatus, user_id: userId } = result
+
+        console.log('accountStatus:', accountStatus)
+        console.log('userId:', userId)
+      } catch (err) {
+        console.log('handlelogin err ', err)
+      }
     },
     async renderButton () {
       await window.gapi.signin2.render('google-login-button', {
         scope: 'profile email',
-        width: 200,
+        width: 250,
         height: 40,
         onsuccess: this.onGoogleSuccess,
         onfailure: () => {},
