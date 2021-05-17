@@ -4,11 +4,15 @@
       {{ detailObj.content }}
     </div>
     <div class="contents-area__time">
-      <p>일시</p>
+      <p class="label">
+        일시
+      </p>
       <p>{{ getDateFormat(detailObj.meetingTime) }}</p>
     </div>
     <div class="contents-area__address">
-      <p>주소</p>
+      <p class="label">
+        주소
+      </p>
       <p>{{ detailObj.address }}</p>
     </div>
 
@@ -56,9 +60,10 @@ export default {
       p {
         font-weight: 300;
       }
-      p:first-child {
-        font-weight: bold;
-      }
+    }
+    & p.label {
+      font-family: 'Khn-heading';
+      font-weight: bold;
     }
   }
   div &__main-text {
@@ -72,6 +77,11 @@ export default {
     width: 95%;
     margin: 0 auto;
     max-height: 30vh;
+    min-height: 10vh;
+    display: flex;
+    align-items: center;
+    font-family: $gamja-flower;
+    font-weight: 500;
   }
   &__address {
     padding: 1rem 2rem;

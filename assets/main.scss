@@ -24,7 +24,6 @@
   --rosy-pink: #f86884;
   --dark-peach: #eb8156;
 
-
   --border-light-gray: 1px solid #ececec;
   --bottom-bar-height: 3.5rem;
   --text-area-height: 2.5rem;
@@ -35,7 +34,17 @@
 }
 
 @import url('https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css');
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Nanum+Gothic:wght@400;700;800&display=swap');
 
+@font-face {
+  font-family: Khn-heading;
+  src: url("~/assets/fonts/KHNPHDotfR.otf") format("opentype");
+}
+@font-face {
+  font-family: Khn-heading;
+  src: url("~/assets/fonts/KHNPHDotfB.otf") format("opentype");
+  font-weight: bold;
+}
 * {
   margin: 0;
   padding: 0;
