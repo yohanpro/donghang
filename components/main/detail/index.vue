@@ -30,11 +30,16 @@
       </div>
     </div>
     <section class="poster-section">
-      <TagArea
-        :tags="detailObj.tags"
-        :is-only-woman="detailObj.isOnlyWoman"
-      />
-      <Profile />
+      <v-card
+        class="poster-section__wrapper"
+        shaped
+      >
+        <TagArea
+          :tags="detailObj.tags"
+          :is-only-woman="detailObj.isOnlyWoman"
+        />
+        <Profile />
+      </v-card>
     </section>
     <ContentsArea :detail-obj="detailObj" />
     <hr class="divider">
@@ -45,6 +50,7 @@
 
 <script>
 import { mapState } from 'vuex'
+
 export default {
   name: 'MainDetail',
   components: {
@@ -89,6 +95,13 @@ export default {
 .v-application p {
   margin-bottom: 0;
 }
+.poster-section__wrapper {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin: 3rem auto 0 ;
+  padding:2rem;
+}
 .participants-status {
   display: flex;
   flex-direction: column;
@@ -113,7 +126,7 @@ export default {
 }
 .detail__cdt {
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 400;
   margin-left: 1rem;
   color: var(--brown-grey);
 }

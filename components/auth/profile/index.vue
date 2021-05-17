@@ -39,6 +39,7 @@ export default {
 .verified-user {
   width: 100%;
   margin-top: 1rem;
+  margin-bottom: 1rem;
   height: 2rem;
   display: flex;
   justify-content: center;
@@ -63,10 +64,11 @@ export default {
     font-size: 1rem;
     font-weight: bold;
     text-align: center;
+    margin-top: 1rem;
   }
   &__photo-wrapper {
-    width: 8.5rem;
-    height: 8.5rem;
+    width: 10rem;
+    height: 10rem;
     position: relative;
     overflow: hidden;
     margin: 0 auto;
