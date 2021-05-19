@@ -19,6 +19,7 @@
         v-for="participant in participantsArr"
         :key="participant.id"
         :participant="participant"
+        :is-allowed="true"
       />
     </div>
   </section>
@@ -42,7 +43,7 @@ export default {
             imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQEZrATmgHOi5ls0YCCQBTkocia_atSw0X-Q&usqp=CAU',
           },
           detail: {
-            textarea: '안녕하세요 저도 반갑습니다.',
+            textarea: '안녕하세요 저도 반갑습니다.안녕하세요 저도 반갑습니다.안녕하세요 저도 반갑습니다.안녕하세요 저도 반갑습니다.안녕하세요 저도 반갑습니다.안녕하세요 저도 반갑습니다.안녕하세요 저도 반갑습니다.안녕하세요 저도 반갑습니다.안녕하세요 저도 반갑습니다.안녕하세요 저도 반갑습니다.안녕하세요 저도 반갑습니다.',
           },
         },
         {

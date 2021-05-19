@@ -23,6 +23,9 @@
         >
       </div>
       <div class="participant__detail">
+        <div class="allow-status">
+          {{ isAllowed && '수락됨' }}
+        </div>
         <div class="participant__detail__text">
           {{ participant.detail.textarea }}
         </div>
@@ -38,6 +41,10 @@ export default {
     participant: {
       type: Object,
       default: () => {},
+    },
+    isAllowed: {
+      type: Boolean,
+      default: false,
     },
   },
   data () {
@@ -57,12 +64,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.allow-status {
+  display: flex;
+  width: 100%;
+  background: #1976d2;
+  justify-content: center;
+  color: #fff;
+  border-radius: 5px;
+  align-items: center;
+  font-size: 1.2rem;
+  padding: 0.3rem 1rem;
+  margin-bottom: 1rem;
+}
 .participant {
   width: 100%;
   height: 120px;
   margin-bottom: 2rem;
   position: relative;
   border-radius: 10px !important;
+
   &__wrapper {
     width: 100%;
     height: 100%;
@@ -86,11 +106,15 @@ export default {
   }
   &__detail {
     display: flex;
-
     flex-direction: column;
     flex: 1;
     height: 100%;
     padding: 1rem 1.5rem;
+    overflow: hidden;
+    &__text {
+      flex: 1;
+      overflow: scroll;
+    }
   }
 }
 
