@@ -108,13 +108,13 @@ export default {
   align-items: center;
   width: 5rem;
   position: absolute;
-  height: 49%;
   background-color: green;
   color: #fff;
   border-top-left-radius: 20%;
   border-bottom-left-radius: 20%;
   border-radius: 12px;
   right: 1rem;
+  padding:0.3rem;
   &__title {
     font-weight: bold;
   }

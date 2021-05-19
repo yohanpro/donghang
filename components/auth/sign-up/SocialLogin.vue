@@ -38,10 +38,11 @@ export default {
       try {
         const result = await this.postToken({ payload, vendor })
 
-        const { account_status: accountStatus, user_id: userId } = result
+        const { account_status: accountStatus } = result
 
-        console.log('accountStatus:', accountStatus)
-        console.log('userId:', userId)
+        if (accountStatus === 1) {
+          this.$router.push('/main/1')
+        }
       } catch (err) {
         console.log('handlelogin err ', err)
       }
