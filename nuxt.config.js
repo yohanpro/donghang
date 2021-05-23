@@ -1,19 +1,19 @@
+import path from 'path'
 import colors from 'vuetify/es5/util/colors'
 import dotenv from 'dotenv'
 
-let path
-
+let envFilePath
 switch (process.env.NODE_ENV) {
   case 'production':
-    path = `${__dirname}/config/env/production.env`
+    envFilePath = path.join(__dirname, '/config/env/production.env')
     break
   case 'development':
-    path = `${__dirname}/config/env/development.env`
+    envFilePath = path.join(__dirname, '/config/env/development.env')
     break
   default:
     break
 }
-dotenv.config({ path })
+dotenv.config({ envFilePath })
 
 export default {
   mode: 'spa',
