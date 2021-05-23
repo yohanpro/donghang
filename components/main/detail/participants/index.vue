@@ -19,7 +19,6 @@
         v-for="participant in participantsArr"
         :key="participant.id"
         :participant="participant"
-        :is-allowed="true"
       />
     </div>
   </section>
