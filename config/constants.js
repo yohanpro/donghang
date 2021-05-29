@@ -105,3 +105,10 @@ export const ACCOUNT_STATUS = {
   LOCKED: 3,
   DELETED: 4,
 }
+
+export const MAIN_ARTICLE_STATUS = {
+  RECRUITING: 1,
+  FINISHED: 2,
+  UPDATED: 3,
+  DELETED: 4,
+}

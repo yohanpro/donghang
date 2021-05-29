@@ -23,6 +23,6 @@ export default {
   }
 }
 .with-title-header {
-  margin-top: 6rem;
+  margin-top: 5rem;
 }
 </style>

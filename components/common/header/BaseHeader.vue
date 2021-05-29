@@ -5,7 +5,7 @@
     extension-height="fit-content"
     elevate-on-scroll
     width="100vw"
-    height="56px"
+    height="50px"
   >
     <slot name="header-left">
       <img
