@@ -1,6 +1,4 @@
 
-import Cookies from 'js-cookie'
-
 export const mutations = {
   updateIsAuthenticated (state, isAuthenticated) {
     state.isAuthenticated = isAuthenticated
@@ -13,11 +11,7 @@ export const mutations = {
   },
 }
 
-const token = Cookies.get('donghang-token')
-
 export const state = () => ({
   isAuthenticated: false,
-  accountStatus: -1,
-  userId: 100,
-  token: token || null,
+
 })

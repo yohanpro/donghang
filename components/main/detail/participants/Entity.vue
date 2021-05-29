@@ -77,10 +77,6 @@ export default {
       type: Object,
       default: () => {},
     },
-    isAllowed: {
-      type: Boolean,
-      default: false,
-    },
   },
   data () {
     return {
