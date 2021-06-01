@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie'
-import { parseToken } from '~/utils/tokenParser'
+// import { parseToken } from '~/utils/tokenParser'
 export const endpoints = {
   token: vendor => `/auth/token?vendor=${vendor}`,
   refreshToken: '/auth/refresh_token',
@@ -69,8 +69,7 @@ export default {
      * 3. axios에 bearer 토큰 set
      */
 
-    const parsedToken = parseToken(accessToken)
-    console.log('🚀 ~ file: actions.js ~ line 55 ~ parsedToken', parsedToken)
+    // const parsedToken = parseToken(accessToken)
 
     Cookies.set('donghang-token', accessToken, { expires: 7 })
     this.$axios.setToken(accessToken, 'Bearer')
