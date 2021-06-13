@@ -1,11 +1,12 @@
 <template>
   <div class="floating-button-container">
-    <button
-      class="floating-button"
-      :class="{ active: isFloatingButtonActive }"
-    >
-      하이
-    </button>
+    <div class="floating-button__tools">
+      <button
+        class="floating-button floating-button-newPost"
+        :class="{ active: isFloatingButtonActive }"
+        @click="goToNewPostPage"
+      />
+    </div>
     <button
       class="floating-button floating-button-toggle"
       @click="toggleFloatingButton"
@@ -22,10 +23,15 @@ export default {
       isFloatingButtonActive: false,
     }
   },
+
   methods: {
     toggleFloatingButton () {
       console.log('toggle')
       this.isFloatingButtonActive = !this.isFloatingButtonActive
+    },
+    goToNewPostPage () {
+      const { countryId } = this.$route.params
+      this.$router.push(`/main/${countryId}/new-post`)
     },
   },
 }
@@ -57,9 +63,25 @@ $close-spins: 1;
     margin-bottom: 1rem;
   }
 
+  &-newPost {
+    background-color: blue;
+    background-color: transparent;
+    border: none;
+    background-image: url('~/assets/images/icons/edit.svg');
+    background-size: 3rem;
+    background-position: center;
+    transform-origin: center;
+    transform: scale(0);
+  }
+  &__tools {
+    margin-bottom: 1rem;
+  }
   &.active {
     opacity: 1;
     transition: all $close-animation-time ease-out;
+    pointer-events: initial;
+    transform: scale(1);
+    transform-origin: center;
   }
   &-container {
     width: 12.5vw;
@@ -79,5 +101,4 @@ $close-spins: 1;
     pointer-events: initial;
   }
 }
-
 </style>
