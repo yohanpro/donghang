@@ -26,7 +26,6 @@ export default {
 
   methods: {
     toggleFloatingButton () {
-      console.log('toggle')
       this.isFloatingButtonActive = !this.isFloatingButtonActive
     },
     goToNewPostPage () {

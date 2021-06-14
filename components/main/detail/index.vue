@@ -99,8 +99,8 @@ export default {
   width: 80%;
   display: flex;
   flex-direction: column;
-  margin: 3rem auto 0 ;
-  padding:2rem;
+  margin: 3rem auto 0;
+  padding: 2rem;
 }
 .participants-status {
   display: flex;
@@ -114,7 +114,7 @@ export default {
   border-bottom-left-radius: 20%;
   border-radius: 12px;
   right: 1rem;
-  padding:0.3rem;
+  padding: 0.3rem;
   &__title {
     font-weight: bold;
   }

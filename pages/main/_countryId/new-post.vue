@@ -1,13 +1,16 @@
 <template>
-  <div>
-    안녕하세요오
-  </div>
+  <PosterEdit
+    edit-type="new"
+  />
 </template>
 
 <script>
 
 export default {
   name: 'NewPostPage',
+  components: {
+    PosterEdit: () => import('~/components/main/edit'),
+  },
   layout: 'with-header',
   middleware: 'authenticated',
 }
