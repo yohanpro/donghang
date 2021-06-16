@@ -10,15 +10,17 @@
         </button>
       </div>
     </base-header>
-    <section>
-      <div class="title">
-        <InputText
-          is-required
-          label-title="안녕"
-          warning-message="warinng"
-          prefilled-value="제목을 입력해 주세요"
-        />
+
+    <section class="title">
+      <div class="title__label">
+        제목
+        <span class="required">*</span>
       </div>
+      <input
+        type="text"
+        maxlength="15"
+        placeholder="제목을 입력하세요"
+      >
     </section>
   </div>
 </template>
@@ -28,7 +30,6 @@ export default {
   name: 'PosterEdit',
   components: {
     BaseHeader: () => import('~/components/common/header/BaseHeader'),
-    InputText: () => import('~/components/common/inputs/inputText'),
   },
   props: {
     editType: {
@@ -52,7 +53,23 @@ export default {
 
 .title {
   width: 100%;
-  padding: 1.5rem 1rem;
-}
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
 
+  &__label {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-left: 0.5rem;
+  }
+
+  input {
+    margin-top: 1rem;
+    flex: 1;
+    border-radius: 6px;
+    border: 1px solid #eee;
+    padding: 1rem;
+    color: black;
+  }
+}
 </style>

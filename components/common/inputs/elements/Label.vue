@@ -4,7 +4,7 @@
       :style="{ color: labelColor }"
       :class="{
         required: isRequired,
-        light: !isLabelBolded
+        light: !isLabelBolded,
       }"
       v-text="labelTitle"
     />
