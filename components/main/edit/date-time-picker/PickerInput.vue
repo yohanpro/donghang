@@ -26,7 +26,11 @@ export default {
 }
 </script>
 
-<style scss scoped>
+<style lang="scss" scoped>
+
+::v-deep .v-text-field__details {
+  display: none;
+}
 .picker-input {
   .prepend-inner-icon {
     width: 20px;
@@ -38,14 +42,11 @@ export default {
     height: 24px;
   }
   > ::v-deep .v-input__control {
-    min-height: 50px;
     input {
       border: none;
-      font-size: 14px;
+      font-size: 1rem;
     }
-    > .v-input__slot {
-      padding: 15px 12px !important;
-    }
+
   }
 }
 </style>

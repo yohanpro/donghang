@@ -31,16 +31,7 @@
       </div>
       <DatePickerDialog />
     </section>
-
-    <section class="location">
-      <div class="label">
-        장소
-      </div>
-
-      <div class="location-map">
-        구글맵이 들어가요
-      </div>
-    </section>
+    <LocationSelect />
   </div>
 </template>
 
@@ -50,6 +41,7 @@ export default {
   components: {
     BaseHeader: () => import('~/components/common/header/BaseHeader'),
     DatePickerDialog: () => import('./date-time-picker/DatepickerDialog'),
+    LocationSelect: () => import('./location-select'),
   },
   props: {
     editType: {
@@ -60,26 +52,27 @@ export default {
   data () {
     return {
       title: '',
+      location: '',
     }
   },
 }
 </script>
 
-<style lang="scss" scoped>
-
-section {
-  width: 100%;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-}
+<style lang="scss">
 .edit {
+  & section {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
   .label {
     font-size: 1.5rem;
     font-weight: bold;
-    padding-left: 0.5rem;
   }
 }
+</style>
+<style lang="scss" scoped>
 .btn-complete {
   color: orange;
   font-size: 1.4rem;
@@ -104,13 +97,5 @@ section {
     padding: 1rem;
     color: black;
   }
-}
-.location-map{
-  width: calc(100% - 1.5rem);
-  margin: 1rem auto;
-  height: 20vh;
-  min-height: 200px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
 }
 </style>

@@ -3,7 +3,6 @@
     <PickerInput place-holder="날짜선택" />
     <base-dialog
       :is-dialog-open="isDatePickerDialogOpen"
-      :confirm-color="confirmColor"
       @close="isDatePickerDialogOpen = false"
     >
       <template #content>
@@ -28,6 +27,7 @@ export default {
   name: 'DatePickerDialog',
   components: {
     PickerInput: () => import('./PickerInput'),
+    BaseDialog: () => import('~/components/common/dialog/BaseDialog'),
   },
   data () {
     return {
