@@ -32,6 +32,10 @@
       <DatePickerDialog />
     </section>
     <LocationSelect />
+    <Description
+      :description="description"
+      @description-input="inputDescription"
+    />
   </div>
 </template>
 
@@ -42,6 +46,7 @@ export default {
     BaseHeader: () => import('~/components/common/header/BaseHeader'),
     DatePickerDialog: () => import('./date-time-picker/DatepickerDialog'),
     LocationSelect: () => import('./location-select'),
+    Description: () => import('./description'),
   },
   props: {
     editType: {
@@ -53,7 +58,13 @@ export default {
     return {
       title: '',
       location: '',
+      description: '',
     }
+  },
+  methods: {
+    inputDescription (data) {
+      this.description = data
+    },
   },
 }
 </script>
