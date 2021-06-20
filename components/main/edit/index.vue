@@ -23,7 +23,7 @@
         placeholder="제목을 입력하세요"
       >
     </section>
-
+    <CategoryInput />
     <section class="date">
       <div class="label">
         일시
@@ -47,6 +47,7 @@ export default {
     DatePickerDialog: () => import('./date-time-picker/DatepickerDialog'),
     LocationSelect: () => import('./location-select'),
     Description: () => import('./description'),
+    CategoryInput: () => import('./category-input'),
   },
   props: {
     editType: {

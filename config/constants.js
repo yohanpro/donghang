@@ -112,3 +112,11 @@ export const MAIN_ARTICLE_STATUS = {
   UPDATED: 3,
   DELETED: 4,
 }
+
+export const CATEGORY_ITEMS = [
+  { index: 1, name: '여자만' },
+  { index: 2, name: '동행 구해요' },
+  { index: 3, name: '식사 같이 해요' },
+  { index: 4, name: '차량 같이 타고 가요' },
+  { index: 5, name: '비행기 같이 타요' },
+]

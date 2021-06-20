@@ -40,8 +40,6 @@ export default {
     },
     initMap () {
       const position = { lat: 37.5487074, lng: 127.074697 }
-      console.log('init map')
-
       this.map = new google.maps.Map(document.getElementById('map'), {
         center: position,
         zoom: 15,
