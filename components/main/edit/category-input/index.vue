@@ -11,12 +11,14 @@
       hint="카테고리를 설정하세요. (최대 3개)"
       persistent-hint
       @input="limiter"
+      @change="handleCategoryChange"
     />
   </section>
 </template>
 
 <script>
 import { getCategoryItem } from '~/utils/helplers'
+import { CATEGORY_ITEMS } from '~/config/constants'
 
 export default {
   name: 'CategoryInput',
@@ -31,6 +33,10 @@ export default {
         alert('최대 3개까지 입니다', e)
         e.pop()
       }
+    },
+    handleCategoryChange (events) {
+      const catergoryCodeName = events.map(event => CATEGORY_ITEMS.find(item => item.name === event).index)
+      this.$emit('category-update', catergoryCodeName)
     },
   },
 }

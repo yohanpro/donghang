@@ -5,7 +5,10 @@
       is-back-button
     >
       <div slot="header-right">
-        <button class="btn-complete">
+        <button
+          class="btn-complete"
+          @click="handleComplete"
+        >
           완료
         </button>
       </div>
@@ -23,7 +26,7 @@
         placeholder="제목을 입력하세요"
       >
     </section>
-    <CategoryInput />
+    <CategoryInput @category-update="updateCategory" />
     <section class="date">
       <div class="label">
         일시
@@ -60,11 +63,19 @@ export default {
       title: '',
       location: '',
       description: '',
+      categories: [],
     }
   },
   methods: {
     inputDescription (data) {
       this.description = data
+    },
+    handleComplete () {
+      const { countryId } = this.$route.params
+      this.$router.push(`/main/${countryId}`)
+    },
+    updateCategory (event) {
+      this.categories = event
     },
   },
 }
