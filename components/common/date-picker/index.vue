@@ -74,24 +74,6 @@
         </div>
       </div>
     </div>
-    <base-dialog
-      :is-dialog-open="isDialogOpen"
-      :confirm-color="'green'"
-      :dialog-padding="'1.5rem 1rem'"
-    >
-      <template #content>
-        <div>
-          일정 기간은 최대 180일까지 <br>선택 가능합니다.
-        </div>
-      </template>
-      <template #footer>
-        <div
-          @click="isDialogOpen = false"
-        >
-          확인
-        </div>
-      </template>
-    </base-dialog>
   </section>
 </template>
 
@@ -101,9 +83,6 @@ import TfCalendar from './TfCalendar'
 
 export default {
   name: 'DatePicker',
-  components: {
-    BaseDialog: () => import('~/components/common/dialog/BaseDialog'),
-  },
   props: {
     availableBookDates: {
       type: Array,

@@ -2,6 +2,7 @@
   <div class="date-picker-dialog">
     <PickerInput
       place-holder="날짜선택"
+      :selected-data="selectedDate"
       @click="hanldeInputClick"
     />
     <base-dialog
@@ -25,6 +26,8 @@
 </template>
 
 <script>
+import { formatDate } from '~/utils/dateHelpers'
+
 export default {
   name: 'DatePickerDialog',
   components: {
@@ -42,11 +45,26 @@ export default {
   },
   methods: {
     hanldeInputClick () {
-      console.log('detapickercicl')
       this.isDatePickerDialogOpen = true
     },
-    handleDateSelect () {
-      console.log('handledateSelect')
+    handleDateSelect (date) {
+      date = new Date(date)
+      this.setDateObj(date)
+      this.selectedDate = formatDate(date, 'yyyy-MM-dd')
+      this.$emit('dateSelect', this.dateObj)
+      this.isDateSelected = true
+    },
+    setDateObj (date) {
+      this.dateObj = {
+        Year: date.getFullYear(),
+        Month: date.getMonth(),
+        Date: date.getDate(),
+      }
+    },
+    onConfirm () {
+      if (this.isDateSelected === true) {
+        this.isDatePickerDialogOpen = false
+      }
     },
   },
 }

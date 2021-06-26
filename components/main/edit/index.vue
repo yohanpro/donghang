@@ -32,7 +32,9 @@
         일시
         <span class="required">*</span>
       </div>
-      <DatePickerDialog />
+      <DatePickerDialog
+        @dateSelect="setDate"
+      />
     </section>
     <LocationSelect />
     <Description
@@ -64,6 +66,7 @@ export default {
       location: '',
       description: '',
       categories: [],
+      newMeetingTimeObj: {},
     }
   },
   methods: {
@@ -76,6 +79,9 @@ export default {
     },
     updateCategory (event) {
       this.categories = event
+    },
+    setDate (value) {
+      this.newMeetingTimeObj = Object.assign(this.newMeetingTimeObj, value)
     },
   },
 }

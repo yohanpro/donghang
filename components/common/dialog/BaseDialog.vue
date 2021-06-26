@@ -12,6 +12,15 @@
       <v-card-text>
         <slot name="content" />
       </v-card-text>
+      <div
+        v-if="hasFooter"
+        class="dialog-footer"
+        :class="[confirmColor]"
+      >
+        <slot name="footer">
+          <div @click="$emit('close')" />
+        </slot>
+      </div>
 
       <!-- <v-card-actions>
         <v-spacer />
@@ -47,6 +56,14 @@ export default {
       type: Function,
       default: () => {},
     },
+    hasFooter: {
+      type: Boolean,
+      default: true,
+    },
+    confirmColor: {
+      type: String,
+      default: 'blue',
+    },
   },
 }
 </script>
@@ -57,5 +74,11 @@ export default {
 }
 .headline {
   margin-bottom: 2.5rem;
+}
+
+.dialog-footer {
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
 }
 </style>

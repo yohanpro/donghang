@@ -1,8 +1,10 @@
 <template>
   <v-text-field
     class="picker-input"
+    readonly
     solo
     :placeholder="placeHolder"
+    :value="selectedData"
     @click="$emit('click')"
   />
 </template>
@@ -28,7 +30,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 ::v-deep .v-text-field__details {
   display: none;
 }
@@ -47,7 +48,6 @@ export default {
       border: none;
       font-size: 1rem;
     }
-
   }
 }
 </style>
