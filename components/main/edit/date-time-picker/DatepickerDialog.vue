@@ -1,6 +1,9 @@
 <template>
   <div class="date-picker-dialog">
-    <PickerInput place-holder="날짜선택" />
+    <PickerInput
+      place-holder="날짜선택"
+      @click="hanldeInputClick"
+    />
     <base-dialog
       :is-dialog-open="isDatePickerDialogOpen"
       @close="isDatePickerDialogOpen = false"
@@ -9,7 +12,6 @@
         <DatePicker
           v-if="isDatePickerDialogOpen"
           :is-range-select="false"
-          :arrow-icon="arrowIcon"
           @startDateSelect="handleDateSelect"
         />
       </template>
@@ -28,6 +30,7 @@ export default {
   components: {
     PickerInput: () => import('./PickerInput'),
     BaseDialog: () => import('~/components/common/dialog/BaseDialog'),
+    DatePicker: () => import('~/components/common/date-picker'),
   },
   data () {
     return {
@@ -36,6 +39,15 @@ export default {
       selectedDate: '',
       dateObj: {},
     }
+  },
+  methods: {
+    hanldeInputClick () {
+      console.log('detapickercicl')
+      this.isDatePickerDialogOpen = true
+    },
+    handleDateSelect () {
+      console.log('handledateSelect')
+    },
   },
 }
 </script>

@@ -3,6 +3,7 @@
     class="picker-input"
     solo
     :placeholder="placeHolder"
+    @click="$emit('click')"
   />
 </template>
 

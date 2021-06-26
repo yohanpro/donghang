@@ -13,7 +13,7 @@
         <slot name="content" />
       </v-card-text>
 
-      <v-card-actions>
+      <!-- <v-card-actions>
         <v-spacer />
         <v-btn
           color="green darken-1"
@@ -29,7 +29,7 @@
         >
           거절
         </v-btn>
-      </v-card-actions>
+      </v-card-actions> -->
     </v-card>
   </v-dialog>
 </template>
