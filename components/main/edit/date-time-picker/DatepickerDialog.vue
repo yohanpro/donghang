@@ -1,5 +1,5 @@
 <template>
-  <div class="date-picker-dialog">
+  <section class="date-picker-dialog">
     <PickerInput
       place-holder="날짜선택"
       :selected-data="selectedDate"
@@ -22,7 +22,7 @@
         </div>
       </template>
     </base-dialog>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -74,7 +74,6 @@ export default {
 .date-picker-dialog {
   margin-right: 6px;
   flex: 1;
-  margin-top: 1rem;
 }
 
 ::v-deep .base-dialog__wrapper .base-dialog__container .dialog-content {

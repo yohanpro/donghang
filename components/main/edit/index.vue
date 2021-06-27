@@ -32,9 +32,10 @@
         일시
         <span class="required">*</span>
       </div>
-      <DatePickerDialog
-        @dateSelect="setDate"
-      />
+      <div class="date-input__wrapper">
+        <DatePickerDialog @dateSelect="setDate" />
+        <TimePickerDialog @timeSelect="setDate" />
+      </div>
     </section>
     <LocationSelect />
     <Description
@@ -50,6 +51,7 @@ export default {
   components: {
     BaseHeader: () => import('~/components/common/header/BaseHeader'),
     DatePickerDialog: () => import('./date-time-picker/DatepickerDialog'),
+    TimePickerDialog: () => import('./date-time-picker/TimePickerDialog'),
     LocationSelect: () => import('./location-select'),
     Description: () => import('./description'),
     CategoryInput: () => import('./category-input'),
@@ -83,6 +85,7 @@ export default {
     setDate (value) {
       this.newMeetingTimeObj = Object.assign(this.newMeetingTimeObj, value)
     },
+
   },
 }
 </script>
@@ -125,6 +128,22 @@ export default {
     border: 1px solid #eee;
     padding: 1rem;
     color: black;
+  }
+}
+
+.date {
+  &-input {
+    height: 100%;
+    &__time {
+      flex: 1;
+      border: 1px solid black;
+      height: 100%;
+    }
+    &__wrapper {
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
   }
 }
 </style>
