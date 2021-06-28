@@ -15,9 +15,7 @@
         alt="검색"
       >
     </div>
-    <div id="map">
-      구글맵이 들어가요
-    </div>
+    <div id="map" />
   </div>
 </template>
 
@@ -83,14 +81,15 @@ export default {
       right: 1rem;
       top: 50%;
       transform: translateY(-50%);
+      cursor: pointer;
     }
   }
 }
 #map {
   width: 100%;
   margin: 1rem auto;
-  height: 20vh;
-  min-height: 200px;
+  height: 25vh;
+  min-height: 250px;
   border: 1px solid #ccc;
 }
 </style>

@@ -37,7 +37,7 @@
         <TimePickerDialog @timeSelect="setDate" />
       </div>
     </section>
-    <LocationSelect />
+    <LocationSelect @change="setLocation" />
     <Description
       :description="description"
       @description-input="inputDescription"
@@ -84,6 +84,19 @@ export default {
     },
     setDate (value) {
       this.newMeetingTimeObj = Object.assign(this.newMeetingTimeObj, value)
+    },
+    setLocation (payload) {
+      const {
+        address,
+        coordinates,
+      } = payload
+      this.payload = {
+        ...this.payload,
+        address: {
+          main: address,
+        },
+        position: coordinates.join(),
+      }
     },
 
   },
