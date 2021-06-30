@@ -5,9 +5,9 @@
     </div>
     <div class="location__search">
       <input
+        v-model="placeInput"
         type="text"
         placeholder="장소를 입력하세요"
-        @input="searchPlace"
       >
       <img
         src="~/assets/images/icons/search.svg"
@@ -27,10 +27,19 @@ export default {
   data () {
     return {
       map: null,
+      marker: null,
+      geocoder: null,
+      infowindow: null,
+      infowindowContent: null,
+      src: '',
+      placeName: '',
+      address: '',
+      placeInput: '',
     }
   },
   mounted () {
     this.initMap()
+    this.initInfoWindow()
   },
   methods: {
     searchPlace (place) {
@@ -42,6 +51,78 @@ export default {
         center: position,
         zoom: 15,
         mapTypeControl: false,
+      })
+      this.marker = new google.maps.Marker({
+        position,
+        map: this.map,
+      })
+
+      const { map, marker } = this
+      // eslint-disable-next-line new-parens
+      this.geocoder = new google.maps.Geocoder
+
+      google.maps.event.addListener(map, 'click', () => {
+        this.infowindow.close()
+      })
+
+      google.maps.event.addListener(map, 'dragstart', () => {
+        this.infowindow.close()
+      })
+      google.maps.event.addListener(map, 'dragend', () => {
+        const center = map.getCenter()
+        this.marker.setPosition(center)
+        this.geocodeLatLng(center)
+      })
+
+      google.maps.event.addListener(map, 'center_changed', () => {
+        const isInfowindowOpen = this.infowindow.getMap()
+
+        if (!isInfowindowOpen) {
+          window.setTimeout(() => {
+            const center = map.getCenter()
+            this.marker.setPosition(center)
+          }, 100)
+        }
+      })
+
+      google.maps.event.addListener(marker, 'click', () => {
+        if (!this.address) {
+          const center = map.getCenter()
+          this.marker.setPosition(center)
+          this.geocodeLatLng(center)
+        }
+        this.infowindow.open(map, marker)
+      })
+    },
+    initInfoWindow () {
+      this.infowindow = new google.maps.InfoWindow()
+      this.infowindowContent = document.getElementById('infowindow-content')
+      this.infowindow.setContent(this.infowindowContent)
+    },
+    geocodeLatLng (location) {
+      const self = this
+      const {
+        infowindow,
+        map,
+        marker,
+      } = this
+      this.geocoder.geocode({ location }, function (results, status) {
+        self.address = ''
+        const [firstResult] = results
+        if (status === 'OK') {
+          if (firstResult) {
+            const { formatted_address: formattedAddress } = firstResult
+            self.address = formattedAddress
+          } else {
+            window.alert('No results found')
+          }
+        } else {
+          window.alert('Geocoder failed due to: ' + status)
+        }
+        self.src = ''
+        self.placeName = ''
+        self.pacInput = self.address
+        infowindow.open(map, marker)
       })
     },
   },
