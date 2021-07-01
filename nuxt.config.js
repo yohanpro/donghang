@@ -60,7 +60,7 @@ export default {
         defer: true,
       },
       {
-        src: `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API_KEY}&libraries=&v=weekly`,
+        src: `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API_KEY}&libraries=places`,
       },
 
     ],

@@ -5,6 +5,7 @@
     </div>
     <div class="location__search">
       <input
+        id="place-input"
         v-model="placeInput"
         type="text"
         placeholder="장소를 입력하세요"
@@ -40,6 +41,7 @@ export default {
   mounted () {
     this.initMap()
     this.initInfoWindow()
+    this.initAutocomplete()
   },
   methods: {
     searchPlace (place) {
@@ -98,6 +100,34 @@ export default {
       this.infowindow = new google.maps.InfoWindow()
       this.infowindowContent = document.getElementById('infowindow-content')
       this.infowindow.setContent(this.infowindowContent)
+    },
+    initAutocomplete () {
+      const { map } = this
+      const input = document.getElementById('place-input')
+      const autocomplete = new google.maps.places.Autocomplete(input)
+      autocomplete.bindTo('bounds', map)
+      autocomplete.setFields(['address_components', 'geometry', 'icon', 'name'])
+      autocomplete.addListener('place_changed', () => {
+        const place = autocomplete.getPlace()
+        if (!place.geometry) {
+          // User entered the name of a Place that was not suggested and
+          // pressed the Enter key, or the Place Details request failed.
+          window.alert("No details available for input: '" + place.name + "'")
+        }
+        if (place.geometry.viewport) {
+          map.fitBounds(place.geometry.viewport)
+        } else {
+          map.setCenter(place.geometry.location)
+          map.setZoom(17) // Why 17? Because it looks good.
+        }
+        this.address = place.address_components?.map(addr => addr.short_name).join(' ')
+        this.pacInput = this.address
+        this.src = place.icon
+        this.placeName = place.name
+        const center = place.geometry.location
+        this.marker.setPosition(center)
+        this.infowindow.open(this.map, this.marker)
+      })
     },
     geocodeLatLng (location) {
       const self = this
