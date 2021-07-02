@@ -17,6 +17,43 @@
       >
     </div>
     <div id="map" />
+    <div
+      v-show="address"
+      id="infowindow-content"
+      @click="handleInfowindowClick()"
+    >
+      <div class="infowindow-content__body">
+        <div class="save-address-title" />
+        <div class="place-name__wrapper">
+          <img
+            v-show="src"
+            id="place-icon"
+            :src="src"
+            :alt="placeName"
+          >
+          <div
+            v-show="placeName"
+            id="place-name"
+            class="title"
+          >
+            {{ placeName }}
+          </div>
+        </div>
+        <div>
+          <span
+            v-show="address"
+            id="place-address"
+          >
+            {{ address }}
+          </span>
+        </div>
+      </div>
+      <img
+        src="~/assets/images/icons/arrow-right.svg"
+        class="infowindow-content-arrow"
+        alt="Save address"
+      >
+    </div>
   </div>
 </template>
 
@@ -61,7 +98,7 @@ export default {
 
       const { map, marker } = this
       // eslint-disable-next-line new-parens
-      this.geocoder = new google.maps.Geocoder
+      this.geocoder = new google.maps.Geocoder()
 
       google.maps.event.addListener(map, 'click', () => {
         this.infowindow.close()
@@ -120,7 +157,9 @@ export default {
           map.setCenter(place.geometry.location)
           map.setZoom(17) // Why 17? Because it looks good.
         }
-        this.address = place.address_components?.map(addr => addr.short_name).join(' ')
+        this.address = place.address_components
+          ?.map(addr => addr.short_name)
+          .join(' ')
         this.pacInput = this.address
         this.src = place.icon
         this.placeName = place.name
@@ -131,11 +170,7 @@ export default {
     },
     geocodeLatLng (location) {
       const self = this
-      const {
-        infowindow,
-        map,
-        marker,
-      } = this
+      const { infowindow, map, marker } = this
       this.geocoder.geocode({ location }, function (results, status) {
         self.address = ''
         const [firstResult] = results
@@ -154,6 +189,16 @@ export default {
         self.pacInput = self.address
         infowindow.open(map, marker)
       })
+    },
+    handleInfowindowClick () {
+      const { lat, lng } = this.marker.getPosition()
+      const coordinates = [lat(), lng()]
+      const payload = {
+        title: this.placeName,
+        coordinates,
+        address: this.address || coordinates.join(),
+      }
+      this.$emit('change', payload)
     },
   },
 }
@@ -202,5 +247,32 @@ export default {
   height: 25vh;
   min-height: 250px;
   border: 1px solid #ccc;
+}
+#infowindow-content {
+  display: flex;
+  align-items: center;
+  font-family: 'Noto Sans KR', sans-serif;
+  .infowindow-content__body {
+    font-size: 14px;
+    font-weight: 300;
+    .save-address-title {
+      font-weight: normal;
+      font-size: 1.25rem;
+    }
+    .place-name__wrapper {
+      display: flex;
+      align-items: center;
+      #place-icon {
+        height: fit-content;
+        max-height: 1rem;
+        width: 1rem;
+        margin-right: 0.25rem;
+      }
+    }
+    #place-address {
+      color: $tealish;
+    }
+  }
+
 }
 </style>

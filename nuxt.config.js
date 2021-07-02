@@ -120,4 +120,8 @@ export default {
       scss: { sourceMap: false },
     },
   },
+  loading: {
+    color: 'blue',
+    height: '5px',
+  },
 }
