@@ -7,7 +7,7 @@
         class="menu-item"
       >
         <img
-          :src="require(`~/assets/images/icons/navbar/${menu.icon}.svg`)"
+          :src="require(`~/assets/images/icons/navbar/${getMenuIconImageSrc(menu.icon)}.svg`)"
           :alt="menu.title"
         >
         <p>{{ menu.title }}</p>
@@ -21,6 +21,7 @@ export default {
   name: 'BottomBar',
   data () {
     return {
+      currentActiveMenuIcon: '',
       menuItems: [
         {
           title: '동행찾기',
@@ -44,6 +45,16 @@ export default {
         },
       ],
     }
+  },
+
+  mounted () {
+    const currentIcon = this.menuItems.find(menuItem => this.$route.path.includes(menuItem.route)).icon
+    this.currentActiveMenuIcon = currentIcon
+  },
+  methods: {
+    getMenuIconImageSrc (icon) {
+      return icon === this.currentActiveMenuIcon ? icon + '-active' : icon
+    },
   },
 }
 </script>
@@ -74,7 +85,7 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    cursor: pointer;
   }
 }
 </style>
