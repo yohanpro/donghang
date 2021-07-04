@@ -5,6 +5,7 @@
         v-for="menu in menuItems"
         :key="menu.title"
         class="menu-item"
+        @click="goToCountryInfo(menu.route)"
       >
         <img
           :src="require(`~/assets/images/icons/navbar/${getMenuIconImageSrc(menu.icon)}.svg`)"
@@ -54,6 +55,18 @@ export default {
   methods: {
     getMenuIconImageSrc (icon) {
       return icon === this.currentActiveMenuIcon ? icon + '-active' : icon
+    },
+    goToCountryInfo (targetRoute) {
+      const hasCountryIdTabsArr = ['main', 'country-info']
+      const isNeedCountryIdRoute = hasCountryIdTabsArr.some(tab => targetRoute.includes(tab))
+
+      let targetUrl = targetRoute
+
+      if (isNeedCountryIdRoute) {
+        const { countryId } = this.$route.params
+        targetUrl += '/' + countryId
+      }
+      return this.$router.push(targetUrl)
     },
   },
 }
