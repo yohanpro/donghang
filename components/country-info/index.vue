@@ -1,11 +1,25 @@
 <template>
   <div>
-    <div>여행지 정보 </div>
+    <div class="country-info">
+      <base-header
+        header-title="여행지 정보"
+        is-back-button
+      />
+    </div>
+    <BottomBar />
   </div>
 </template>
 
 <script>
 export default {
   name: 'CountryInfo',
+  components: {
+    BaseHeader: () => import('~/components/common/header/BaseHeader'),
+    BottomBar: () => import('~/components/common/bottom-bar'),
+  },
 }
 </script>
+
+<style lang="scss" scoped>
+
+</style>

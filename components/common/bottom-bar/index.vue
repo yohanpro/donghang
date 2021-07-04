@@ -32,7 +32,7 @@ export default {
         {
           title: '여행지 정보',
           route: '/country-info',
-          icon: 'info',
+          icon: 'country-info',
         },
         {
           title: '채팅',
