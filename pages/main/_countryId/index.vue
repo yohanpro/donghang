@@ -1,7 +1,7 @@
 <template>
   <div>
     <Main />
-    <FloatingButton />
+    <FloatingButton target-edit-page="main" />
   </div>
 </template>
 <script>
@@ -10,7 +10,7 @@ export default {
   name: 'MainArticlePage',
   components: {
     Main: () => import('~/components/main'),
-    FloatingButton: () => import('~/components/main/FloatingButton'),
+    FloatingButton: () => import('~/components/common/FloatingButton'),
   },
   layout: 'with-header',
   middleware: 'authenticated',

@@ -18,6 +18,12 @@
 <script>
 export default {
   name: 'FloatingButton',
+  props: {
+    targetEditPage: {
+      type: String,
+      default: 'main',
+    },
+  },
   data () {
     return {
       isFloatingButtonActive: false,
@@ -30,7 +36,8 @@ export default {
     },
     goToNewPostPage () {
       const { countryId } = this.$route.params
-      this.$router.push(`/main/${countryId}/new-post`)
+
+      this.$router.push(`/${this.targetEditPage}/${countryId}/new-post`)
     },
   },
 }
