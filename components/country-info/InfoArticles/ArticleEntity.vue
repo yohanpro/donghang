@@ -38,7 +38,7 @@ export default {
     getArticleStatus,
     goToArticleDetail () {
       const { country, id } = this.articleObj
-      this.$router.push(`/main/${country}/${id}`)
+      this.$router.push(`/country-info/${country}/${id}`)
     },
   },
 }
