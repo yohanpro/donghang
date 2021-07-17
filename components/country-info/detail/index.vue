@@ -18,22 +18,7 @@
       </div>
     </base-header>
     <section class="country-info-detail__body">
-      <div class="country-info-detail__writer-container">
-        <p class="tag">
-          {{ detailObj.tag }}
-        </p>
-        <div class="country-info-detail__writer">
-          <div class="country-info-detail__writer-image-container">
-            <img
-              :src="detailObj.writer_detail.profile_pic_bi.url"
-              alt="Writer image"
-            >
-          </div>
-          <p class="country-info-detail__writer__nickname">
-            {{ detailObj.writer_detail.nick_name }}
-          </p>
-        </div>
-      </div>
+      <DetailWriter :detail-obj="detailObj" />
     </section>
     <BottomBar />
   </div>
@@ -45,6 +30,7 @@ export default {
   components: {
     BottomBar: () => import('~/components/common/bottom-bar'),
     BaseHeader: () => import('~/components/common/header/BaseHeader'),
+    DetailWriter: () => import('./Writer.vue'),
   },
   data () {
     return {
@@ -130,37 +116,6 @@ export default {
 .country-info-detail {
   &__body {
     padding: 1rem;
-  }
-  .tag {
-    margin-bottom: 1rem;
-  }
-  &__writer {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    &-image-container {
-      width: 4rem;
-      height: 4rem;
-      max-width: 50px;
-      border: 1px solid #ccc;
-      border-radius: 50%;
-      overflow: hidden;
-      & > img {
-        width: 100%;
-      }
-    }
-    &-container {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      padding: 1rem 0.5rem;
-      border-bottom: 1px solid #ececec;
-    }
-
-    &__nickname {
-      font-size: 1.3rem;
-      margin-left: 1rem;
-    }
   }
 }
 </style>
