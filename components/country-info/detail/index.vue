@@ -19,6 +19,7 @@
     </base-header>
     <section class="country-info-detail__body">
       <DetailWriter :detail-obj="detailObj" />
+      <DetailMain :contents="detailObj.contents" />
     </section>
     <BottomBar />
   </div>
@@ -31,6 +32,7 @@ export default {
     BottomBar: () => import('~/components/common/bottom-bar'),
     BaseHeader: () => import('~/components/common/header/BaseHeader'),
     DetailWriter: () => import('./Writer.vue'),
+    DetailMain: () => import('./main.vue'),
   },
   data () {
     return {
@@ -55,8 +57,12 @@ export default {
       detailObj: {
         id: 1,
         title: '파리 샤를 드골 공항 지금 입국 상황',
-        content:
-          '보시다시피 현 상황입니다. 사람들이 너무 많이 입국해서 대기시간만 거의 3시간이네요. 곧 입국하실 분들 참고하시길 ',
+        contents:
+          {
+            text: '보시다시피 현 상황입니다. 사람들이 너무 많이 입국해서 대기시간만 거의 3시간이네요. 곧 입국하실 분들 참고하시길',
+            imageURL: ['http://ojsfile.ohmynews.com/STD_IMG_FILE/2016/1130/IE002061065_STD.jpg', 'https://img2.yna.co.kr/photo/etc/af/2021/02/01/PAF20210201207701055_P2.jpg'],
+          },
+
         writer: 148,
         writer_detail: {
           id: 1,
@@ -70,7 +76,7 @@ export default {
         country: 1,
         status: 1,
         meta: {},
-        create_dt: '2021-03-26T16:27:39.910303+09:00',
+        create_dt: '2021-07-16T14:45:39.910303+09:00',
         update_dt: '2021-05-29T10:21:57.456107+09:00',
         tag: '입국정보',
       },
@@ -116,6 +122,7 @@ export default {
 .country-info-detail {
   &__body {
     padding: 1rem;
+    padding-bottom: 10rem;
   }
 }
 </style>
