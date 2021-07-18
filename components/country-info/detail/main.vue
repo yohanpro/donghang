@@ -8,7 +8,7 @@
         v-for="image in contents.imageURL"
         :key="image"
         :src="image"
-        alt=""
+        alt="Image"
       >
     </div>
   </div>
