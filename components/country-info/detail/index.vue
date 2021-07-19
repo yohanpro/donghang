@@ -21,8 +21,7 @@
       <DetailWriter :detail-obj="detailObj" />
       <DetailMain :contents="detailObj.contents" />
     </section>
-
-    <section class="replyies" />
+    <Reactions :reaction-obj="detailObj.reactionObj" />
     <BottomBar />
   </div>
 </template>
@@ -35,6 +34,7 @@ export default {
     BaseHeader: () => import('~/components/common/header/BaseHeader'),
     DetailWriter: () => import('./Writer.vue'),
     DetailMain: () => import('./main.vue'),
+    Reactions: () => import('./reactions/index.vue'),
   },
   data () {
     return {
@@ -59,11 +59,14 @@ export default {
       detailObj: {
         id: 1,
         title: '파리 샤를 드골 공항 지금 입국 상황',
-        contents:
-          {
-            text: '보시다시피 현 상황입니다. 사람들이 너무 많이 입국해서 대기시간만 거의 3시간이네요. 곧 입국하실 분들 참고하시길',
-            imageURL: ['http://ojsfile.ohmynews.com/STD_IMG_FILE/2016/1130/IE002061065_STD.jpg', 'https://img2.yna.co.kr/photo/etc/af/2021/02/01/PAF20210201207701055_P2.jpg'],
-          },
+        contents: {
+          text:
+            '보시다시피 현 상황입니다. 사람들이 너무 많이 입국해서 대기시간만 거의 3시간이네요. 곧 입국하실 분들 참고하시길',
+          imageURL: [
+            'http://ojsfile.ohmynews.com/STD_IMG_FILE/2016/1130/IE002061065_STD.jpg',
+            'https://img2.yna.co.kr/photo/etc/af/2021/02/01/PAF20210201207701055_P2.jpg',
+          ],
+        },
 
         writer: 148,
         writer_detail: {
@@ -81,18 +84,37 @@ export default {
         create_dt: '2021-07-16T14:45:39.910303+09:00',
         update_dt: '2021-05-29T10:21:57.456107+09:00',
         tag: '입국정보',
-        reactions: {
+        reactionObj: {
           replies: [
             {
               replyId: 1,
               writerId: 3,
-              writerPictures: 'https://s3-ap-northeast-1.amazonaws.com/ojuz-attach/profile/images/GioChkhaidze',
+              writerPictures:
+                'https://s3-ap-northeast-1.amazonaws.com/ojuz-attach/profile/images/GioChkhaidze',
               text: '샤를 드골은 지금 그런가요? 참고하겠습니다.',
-              subReplies: [{
-                subReplyId: 1,
-                subReplyWriter: 12,
-                subReplyPictures: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Souvenir_silhouette_post_card._Toledo%27s_greatest_store%3B_Tiedtke%27s._The_store_for_all_the_people_-_DPLA_-_f00a78fe61c216236a13cdebf588d3c3_%28page_1%29.jpg/220px-Souvenir_silhouette_post_card._Toledo%27s_greatest_store%3B_Tiedtke%27s._The_store_for_all_the_people_-_DPLA_-_f00a78fe61c216236a13cdebf588d3c3_%28page_1%29.jpg',
-              }],
+              create_dt: '2021-07-16T15:45:39.910303+09:00',
+              update_dt: '2021-05-29T10:21:57.456107+09:00',
+              subReplies: [
+                {
+                  subReplyId: 148,
+                  subReplyWriterId: 12,
+                  subReplyPictures:
+                    'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Souvenir_silhouette_post_card._Toledo%27s_greatest_store%3B_Tiedtke%27s._The_store_for_all_the_people_-_DPLA_-_f00a78fe61c216236a13cdebf588d3c3_%28page_1%29.jpg/220px-Souvenir_silhouette_post_card._Toledo%27s_greatest_store%3B_Tiedtke%27s._The_store_for_all_the_people_-_DPLA_-_f00a78fe61c216236a13cdebf588d3c3_%28page_1%29.jpg',
+                  text: '네 지금 중국인들 대거 입국해서 난리네요',
+                  create_dt: '2021-07-16T15:48:39.910303+09:00',
+                  update_dt: '2021-05-29T10:21:57.456107+09:00',
+                },
+                {
+                  subReplyId: 2,
+                  subReplyWriterId: 3,
+                  subReplyPictures:
+                    'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Souvenir_silhouette_post_card._Toledo%27s_greatest_store%3B_Tiedtke%27s._The_store_for_all_the_people_-_DPLA_-_f00a78fe61c216236a13cdebf588d3c3_%28page_1%29.jpg/220px-Souvenir_silhouette_post_card._Toledo%27s_greatest_store%3B_Tiedtke%27s._The_store_for_all_the_people_-_DPLA_-_f00a78fe61c216236a13cdebf588d3c3_%28page_1%29.jpg',
+                  text: '이제 더 들어오는 비행기가 없으니 괜찮겠죠? ㅠㅠ',
+                  create_dt: '2021-07-16T15:55:39.910303+09:00',
+                  update_dt: '2021-05-29T10:21:57.456107+09:00',
+
+                },
+              ],
             },
           ],
         },
