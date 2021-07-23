@@ -17,6 +17,17 @@ export default {
       required: true,
     },
   },
+  computed: {
+    totalReplies () {
+      const { replies } = this.reactionObj
+      const replyTotal = replies.length
+      const subReplyTotal = replies.reduce((total, current) => {
+        total += current.subReplies.length
+        return total
+      }, 0)
+      return replyTotal + subReplyTotal
+    },
+  },
 }
 </script>
 

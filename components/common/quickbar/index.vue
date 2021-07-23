@@ -1,12 +1,19 @@
 <template>
-  <div class="quickbar">
-    퀵바 영역
+  <div class="quickbar border pt-2 pb-2">
+    <slot name="question" />
+    <slot name="replies" />
   </div>
 </template>
 
 <script>
 export default {
   name: 'Quickbar',
+  props: {
+    replies: {
+      type: Number,
+      default: 0,
+    },
+  },
 }
 </script>
 
