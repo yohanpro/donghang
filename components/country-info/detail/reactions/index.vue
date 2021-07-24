@@ -1,6 +1,7 @@
 <template>
   <section class="reactions">
-    <Quickbar />
+    <Quickbar :total-replies="totalReplies" />
+    <div class="mt-4" />
   </section>
 </template>
 
@@ -8,7 +9,7 @@
 export default {
   name: 'Reactions',
   components: {
-    Quickbar: () => import('~/components/common/quickbar'),
+    Quickbar: () => import('./quickbar'),
   },
   props: {
     reactionObj: {

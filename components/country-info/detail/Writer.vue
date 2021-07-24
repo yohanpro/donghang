@@ -1,6 +1,6 @@
 <template>
   <div class="writer-container">
-    <p class="tag">
+    <p class="tag bg-gray-50 w-max pl-2 pr-2">
       {{ detailObj.tag }}
     </p>
     <div class="writer">
