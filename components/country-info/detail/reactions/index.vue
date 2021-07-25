@@ -5,6 +5,7 @@
       <CommentsOrder
         :selected-order-type="selectedOrderType"
         :order-types="orderTypes"
+        @button-click="changeOrderType"
       />
     </div>
   </section>
@@ -51,8 +52,9 @@ export default {
     },
   },
   methods: {
-    handleOrderReplies (order) {
-      this.selectedOrderType = order
+    changeOrderType (type) {
+      console.log('여기로 들엉와뗭', type)
+      this.selectedOrderType = type
     },
   },
 }
