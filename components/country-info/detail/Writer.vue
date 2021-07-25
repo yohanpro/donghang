@@ -23,7 +23,6 @@
 </template>
 
 <script>
-
 import { getTimeDiff } from '~/utils/dateHelpers'
 
 export default {
@@ -37,7 +36,6 @@ export default {
   },
   methods: {
     getTimeDiff,
-
   },
 }
 </script>

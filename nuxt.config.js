@@ -49,8 +49,7 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
         rel: 'stylesheet',
-        href:
-          'https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,600,700,900&display=swap&subset=korean',
+        href: 'https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,600,700,900&display=swap&subset=korean',
       },
     ],
     script: [
@@ -62,7 +61,6 @@ export default {
       {
         src: `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API_KEY}&libraries=places`,
       },
-
     ],
   },
 
@@ -70,7 +68,12 @@ export default {
   css: ['assets/main.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/axios', '~plugins/event-bus'],
+  plugins: [
+    '~/plugins/axios',
+    '~/plugins/event-bus',
+    '~/plugins/compose',
+    '~/plugins/pipe',
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

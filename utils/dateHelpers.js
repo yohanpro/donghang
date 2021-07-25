@@ -1,13 +1,7 @@
-import {
-  parse as parseDate,
-  format,
-  differenceInMilliseconds,
-  addMilliseconds,
-  addMinutes,
-} from 'date-fns'
-import { getTime } from 'date-fns/esm'
-
+import { format } from 'date-fns'
 import dayjs from 'dayjs'
+import Vue from 'vue'
+import { pipe } from './helplers'
 
 export const formatDate = (
   date,
@@ -59,15 +53,12 @@ export const dateDiffconvertToString = ({ diff, type }) => {
     case 'minute':
       differenceText = diff + '분 전'
       break
-
     case 'day':
       differenceText = diff + '일 전'
       break
-
     case 'second':
       differenceText = '방금'
       break
-
     default:
       break
   }
@@ -75,7 +66,7 @@ export const dateDiffconvertToString = ({ diff, type }) => {
   return differenceText
 }
 
-export function getTimeDiff (time) {
-  const timeDiff = calculatePassedTime(time)
-  return dateDiffconvertToString(timeDiff)
-}
+export const getTimeDiff = time =>
+  pipe(calculatePassedTime, dateDiffconvertToString)(time)
+
+// export const getTimeDiff = time => Vue.prototype.$pipe(calculatePassedTime, dateDiffconvertToString)(time)

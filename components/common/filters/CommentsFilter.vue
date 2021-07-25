@@ -1,5 +1,5 @@
 <template>
-  <div class="filters">
+  <div class="comments-filter">
     <div class="">
       등록순
     </div>
@@ -10,6 +10,7 @@
 <script lang="ts">
 
 export default {
-  name: 'Filter',
+  name: 'CommentsFilter',
+
 }
 </script>
