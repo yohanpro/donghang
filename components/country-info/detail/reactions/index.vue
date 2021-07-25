@@ -2,7 +2,10 @@
   <section class="reactions">
     <Quickbar :total-replies="totalReplies" />
     <div class="mt-4">
-      <CommentsFilter />
+      <CommentsOrder
+        :selected-order-type="selectedOrderType"
+        :order-types="orderTypes"
+      />
     </div>
   </section>
 </template>
@@ -12,7 +15,7 @@ export default {
   name: 'Reactions',
   components: {
     Quickbar: () => import('./quickbar'),
-    CommentsFilter: () => import('~/components/common/filters/CommentsFilter.vue'),
+    CommentsOrder: () => import('~/components/common/ordering/CommentsOrder'),
   },
   props: {
     reactionObj: {
@@ -20,6 +23,21 @@ export default {
       default: () => {},
       required: true,
     },
+  },
+  data () {
+    return {
+      orderTypes: [
+        {
+          title: '등록순',
+          orderBy: 'date',
+        },
+        {
+          title: '최신순',
+          orderBy: 'latest',
+        },
+      ],
+      selectedOrderType: 'date',
+    }
   },
   computed: {
     totalReplies () {
@@ -30,6 +48,11 @@ export default {
         return total
       }, 0)
       return replyTotal + subReplyTotal
+    },
+  },
+  methods: {
+    handleOrderReplies (order) {
+      this.selectedOrderType = order
     },
   },
 }
