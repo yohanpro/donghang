@@ -1,12 +1,20 @@
 <template>
   <section class="reactions">
     <Quickbar :total-replies="totalReplies" />
-    <div class="mt-4">
+    <div class="mt-4 replies-container">
       <CommentsOrder
         :selected-order-type="selectedOrderType"
         :order-types="orderTypes"
         @button-click="changeOrderType"
       />
+      <!-- <div
+        v-for="reply in replies"
+        :key="reply.id"
+        class="replies"
+      >
+        {{ reply.text }}
+      </div> -->
+      <Replies :replies-obj="reactionObj.replies" />
     </div>
   </section>
 </template>
@@ -17,6 +25,7 @@ export default {
   components: {
     Quickbar: () => import('./quickbar'),
     CommentsOrder: () => import('~/components/common/ordering/CommentsOrder'),
+    Replies: () => import('./replies'),
   },
   props: {
     reactionObj: {
@@ -49,6 +58,9 @@ export default {
         return total
       }, 0)
       return replyTotal + subReplyTotal
+    },
+    replies () {
+      return this.reactionObj.replies
     },
   },
   methods: {

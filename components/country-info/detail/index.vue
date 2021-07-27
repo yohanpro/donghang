@@ -85,7 +85,7 @@ export default {
         reactionObj: {
           replies: [
             {
-              replyId: 1,
+              id: 1,
               writerId: 3,
               writerPictures:
                 'https://s3-ap-northeast-1.amazonaws.com/ojuz-attach/profile/images/GioChkhaidze',
@@ -94,7 +94,7 @@ export default {
               update_dt: '2021-05-29T10:21:57.456107+09:00',
               subReplies: [
                 {
-                  subReplyId: 148,
+                  id: 148,
                   subReplyWriterId: 12,
                   subReplyPictures:
                     'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Souvenir_silhouette_post_card._Toledo%27s_greatest_store%3B_Tiedtke%27s._The_store_for_all_the_people_-_DPLA_-_f00a78fe61c216236a13cdebf588d3c3_%28page_1%29.jpg/220px-Souvenir_silhouette_post_card._Toledo%27s_greatest_store%3B_Tiedtke%27s._The_store_for_all_the_people_-_DPLA_-_f00a78fe61c216236a13cdebf588d3c3_%28page_1%29.jpg',
@@ -103,7 +103,7 @@ export default {
                   update_dt: '2021-05-29T10:21:57.456107+09:00',
                 },
                 {
-                  subReplyId: 2,
+                  id: 2,
                   subReplyWriterId: 3,
                   subReplyPictures:
                     'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Souvenir_silhouette_post_card._Toledo%27s_greatest_store%3B_Tiedtke%27s._The_store_for_all_the_people_-_DPLA_-_f00a78fe61c216236a13cdebf588d3c3_%28page_1%29.jpg/220px-Souvenir_silhouette_post_card._Toledo%27s_greatest_store%3B_Tiedtke%27s._The_store_for_all_the_people_-_DPLA_-_f00a78fe61c216236a13cdebf588d3c3_%28page_1%29.jpg',
@@ -114,7 +114,7 @@ export default {
               ],
             },
             {
-              replyId: 2,
+              id: 2,
               writerId: 8,
               writerPictures:
                 'https://s3-ap-northeast-1.amazonaws.com/ojuz-attach/profile/images/GioChkhaidze',
