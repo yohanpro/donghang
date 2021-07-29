@@ -17,7 +17,10 @@ const token = Cookies.get('donghang-token')
 
 export const state = () => ({
   isAuthenticated: false,
-  accountStatus: -1,
   userId: 100,
   token: token || null,
+  userObj: {},
+  accountStatus: -1,
+  userAgreements: {},
+  userImage: '',
 })

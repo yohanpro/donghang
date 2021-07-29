@@ -1,6 +1,11 @@
 <template>
   <div class="reply-entity">
-    <div>{{ reply.text }}</div>
+    <div class="wrapper flex flex-col w-full">
+      <User :user-id="reply.writerId" />
+      <p>
+        {{ reply.text }}
+      </p>
+    </div>
     <div v-if="hasSubReply">
       <SubReplyEntity
         v-for="subReply in reply.subReplies"
@@ -16,6 +21,7 @@ export default {
   name: 'ReplyEntity',
   components: {
     SubReplyEntity: () => import('./SubReplyEntity'),
+    User: () => import('~/components/common/user'),
   },
   props: {
     reply: {
@@ -30,3 +36,12 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.reply-entity {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+</style>
