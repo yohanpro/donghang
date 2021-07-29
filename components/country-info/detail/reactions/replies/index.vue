@@ -16,8 +16,8 @@ export default {
   },
   props: {
     repliesObj: {
-      type: Object,
-      default: () => {},
+      type: Array,
+      default: () => [],
     },
   },
 }

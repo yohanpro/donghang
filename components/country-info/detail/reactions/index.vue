@@ -7,13 +7,6 @@
         :order-types="orderTypes"
         @button-click="changeOrderType"
       />
-      <!-- <div
-        v-for="reply in replies"
-        :key="reply.id"
-        class="replies"
-      >
-        {{ reply.text }}
-      </div> -->
       <Replies :replies-obj="reactionObj.replies" />
     </div>
   </section>
