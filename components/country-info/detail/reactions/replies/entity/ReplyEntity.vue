@@ -1,7 +1,10 @@
 <template>
   <div class="reply-entity flex flex-col">
     <div class="wrapper flex flex-col w-full">
-      <User :user-id="reply.writerId" />
+      <User
+        :user-id="reply.writerId"
+        :is-post-writer="isPostWriter"
+      />
       <p class="mt-2 text-xl">
         {{ reply.text }}
       </p>
@@ -40,10 +43,17 @@ export default {
       type: Object,
       default: () => {},
     },
+    postWriter: {
+      type: Object,
+      default: null,
+    },
   },
   computed: {
     hasSubReply () {
       return this.reply.subReplies.length > 0
+    },
+    isPostWriter () {
+      return this.postWriter.id === this.reply.writerId
     },
   },
 }

@@ -7,7 +7,10 @@
         :order-types="orderTypes"
         @button-click="changeOrderType"
       />
-      <Replies :replies-obj="reactionObj.replies" />
+      <Replies
+        :replies-obj="reactionObj.replies"
+        :post-writer="postWriter"
+      />
     </div>
   </section>
 </template>
@@ -25,6 +28,10 @@ export default {
       type: Object,
       default: () => {},
       required: true,
+    },
+    postWriter: {
+      type: Object,
+      default: null,
     },
   },
   data () {
@@ -58,7 +65,6 @@ export default {
   },
   methods: {
     changeOrderType (type) {
-      console.log('여기로 들엉와뗭', type)
       this.selectedOrderType = type
     },
   },

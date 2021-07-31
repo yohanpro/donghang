@@ -21,7 +21,10 @@
       <DetailWriter :detail-obj="detailObj" />
       <DetailMain :contents="detailObj.contents" />
     </section>
-    <Reactions :reaction-obj="detailObj.reactionObj" />
+    <Reactions
+      :post-writer="detailObj.writer_detail"
+      :reaction-obj="detailObj.reactionObj"
+    />
     <BottomBar />
   </div>
 </template>
@@ -32,9 +35,9 @@ export default {
   components: {
     BottomBar: () => import('~/components/common/bottom-bar'),
     BaseHeader: () => import('~/components/common/header/BaseHeader'),
-    DetailWriter: () => import('./Writer.vue'),
-    DetailMain: () => import('./main.vue'),
-    Reactions: () => import('./reactions/index.vue'),
+    DetailWriter: () => import('./elements/Writer'),
+    DetailMain: () => import('./elements/Main'),
+    Reactions: () => import('./reactions'),
   },
   data () {
     return {
@@ -69,7 +72,7 @@ export default {
 
         writer: 148,
         writer_detail: {
-          id: 1,
+          id: 3,
           profile_pic_bi: {
             url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1uENsfHX_t2wf1PJ9YL2jw8XkWV7UXK7uiuT9WDHhlZbZthwUVQVjz1kwkCZp2njRQN4&usqp=CAU',
           },

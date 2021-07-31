@@ -4,6 +4,7 @@
       v-for="reply in repliesObj"
       :key="reply.id"
       :reply="reply"
+      :post-writer="postWriter"
     />
   </div>
 </template>
@@ -12,12 +13,16 @@
 export default {
   name: 'Replies',
   components: {
-    ReplyEntity: () => import('./ReplyEntity'),
+    ReplyEntity: () => import('./entity/ReplyEntity'),
   },
   props: {
     repliesObj: {
       type: Array,
       default: () => [],
+    },
+    postWriter: {
+      type: Object,
+      default: null,
     },
   },
 }
