@@ -1,12 +1,24 @@
 <template>
-  <div class="reply-entity">
+  <div class="reply-entity flex flex-col">
     <div class="wrapper flex flex-col w-full">
       <User :user-id="reply.writerId" />
-      <p>
+      <p class="mt-2 text-xl">
         {{ reply.text }}
       </p>
+      <div class="mt-2 flex items-center text-gray-500">
+        <p class="mr-4">
+          좋아요
+          <span class="ml-1">
+            1
+          </span>
+        </p>
+        <p>답글쓰기</p>
+      </div>
     </div>
-    <div v-if="hasSubReply">
+    <div
+      v-if="hasSubReply"
+      class="w-full mt-4"
+    >
       <SubReplyEntity
         v-for="subReply in reply.subReplies"
         :key="subReply.id"
@@ -43,5 +55,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 2rem;
+  margin-left: 0.5rem;
 }
 </style>

@@ -13,11 +13,15 @@ export const mutations = {
   },
 }
 
+export const getters = {
+  userObject: state => state.userObj,
+}
+
 const token = Cookies.get('donghang-token')
 
 export const state = () => ({
   isAuthenticated: false,
-  userId: 100,
+  userId: null,
   token: token || null,
   userObj: {},
   accountStatus: -1,
