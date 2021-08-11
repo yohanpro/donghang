@@ -9,7 +9,7 @@
         <p class="mr-4">
           좋아요
           <span class="ml-1">
-            1
+            2
           </span>
         </p>
       </div>
