@@ -9,6 +9,7 @@
 
 <script>
 import { mapActions } from 'vuex'
+import { ACCOUNT_STATUS } from '~/config/constants'
 export default {
   name: 'SocialLogin',
   data () {
@@ -37,11 +38,12 @@ export default {
     async handleLogin (payload, vendor) {
       try {
         const result = await this.postToken({ payload, vendor })
+        const { activeStatus } = result
 
-        const { account_status: accountStatus } = result
-
-        if (accountStatus === 1) {
+        if (activeStatus === ACCOUNT_STATUS.ACTIVE) {
           this.$router.push('/main/1')
+        } else if (activeStatus === ACCOUNT_STATUS.PRE_ACTIVE) {
+          this.$router.push('/auth/sign-up/agree-to-terms')
         }
       } catch (err) {
         console.log('handlelogin err ', err)

@@ -3,8 +3,8 @@ export const mutations = {
   updateIsAuthenticated (state, isAuthenticated) {
     state.isAuthenticated = isAuthenticated
   },
-  updateAccountStatus (state, accountStatus) {
-    state.accountStatus = accountStatus
+  updateActiveStatus (state, activeStatus) {
+    state.activeStatus = activeStatus
   },
   updateToken (state, token) {
     state.token = token

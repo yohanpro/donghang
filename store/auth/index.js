@@ -5,11 +5,14 @@ export const mutations = {
   updateIsAuthenticated (state, isAuthenticated) {
     state.isAuthenticated = isAuthenticated
   },
-  updateAccountStatus (state, accountStatus) {
-    state.accountStatus = accountStatus
+  updateActiveStatus (state, activeStatus) {
+    state.activeStatus = activeStatus
   },
   updateToken (state, token) {
     state.token = token
+  },
+  updateUserId (state, userId) {
+    state.userId = userId
   },
 }
 
@@ -24,7 +27,7 @@ export const state = () => ({
   userId: null,
   token: token || null,
   userObj: {},
-  accountStatus: -1,
+  activeStatus: -1,
   userAgreements: {},
   userImage: '',
 })

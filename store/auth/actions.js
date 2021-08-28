@@ -1,14 +1,11 @@
 import Cookies from 'js-cookie'
+import { ACCOUNT_STATUS } from '~/config/constants'
 // import { parseToken } from '~/utils/tokenParser'
 export const endpoints = {
-  token: vendor => `/auth/token?vendor=${vendor}`,
+  token: vendor => `/auth/${vendor}`,
   refreshToken: '/auth/refresh_token',
 }
 
-/**
- * signIn 로직
- *
- */
 export default {
   async signIn (_, { vendor, payload }) {
     try {
@@ -47,32 +44,30 @@ export default {
   }, { payload, vendor }) {
     const result = await this.$axios.post(endpoints.token(vendor), payload)
 
-    const { accessToken, account_status: accountStatus } = result.data
+    const { token, activeStatus, userId } = result.data
     /**
      * 백엔드에서 토큰을 받았을 경우
      * 받아온 토큰을 다시 retrive 해주어야 한다.
      * 이제 이 토큰으로 계속 주고 받고 하기 때문에 이를 Cookie에 저장해준다.
      */
     // this.handleTokenRetrieve({ accountStatus, accessToken })
-    dispatch('handleTokenRetrieve', { accessToken, accountStatus })
+    dispatch('handleTokenRetrieve', { token, activeStatus, userId })
     return result.data
   },
 
   handleTokenRetrieve ({ commit, dispatch }, {
     accessToken,
-    accountStatus,
+    activeStatus,
+    userId,
   }) {
-    /**
-     * Retrieve에서 하는 일 :
-     * 1. cookie에 access token 저장
-     * 2. active, preactive인 유저 판단하여 로직 수행
-     * 3. axios에 bearer 토큰 set
-     */
+    const { PRE_ACTIVE, ACTIVE, NOT_ACTIVE } = ACCOUNT_STATUS
 
-    // const parsedToken = parseToken(accessToken)
-
-    Cookies.set('donghang-token', accessToken, { expires: 7 })
+    if (activeStatus === ACTIVE) {
+      Cookies.set('donghang-token', accessToken, { expires: 7 })
+      commit('updateIsAuthenticated', true)
+    }
     this.$axios.setToken(accessToken, 'Bearer')
-    commit('updateAccountStatus', accountStatus)
+    commit('updateUserId', userId)
+    commit('updateActiveStatus', activeStatus)
   },
 }
