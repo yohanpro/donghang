@@ -41,7 +41,7 @@ export default {
         },
         {
           title: '나의 정보',
-          route: '/mypage',
+          route: '/my-info',
           icon: 'person',
         },
       ],
