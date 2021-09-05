@@ -1,8 +1,6 @@
 <template>
-  <div class="my-info p-4 flex-col items-start">
-    <base-header
-      header-title="나의 동행"
-    >
+  <div class="my-info flex-col items-start">
+    <base-header header-title="나의 동행">
       <div
         slot="header-right"
         @click.prevent="handleSettings"
@@ -13,27 +11,32 @@
         >
       </div>
     </base-header>
-
-    <Profile />
-    <v-btn
-      class="mt-4 w-full pl-0 pr-0"
-    >
-      프로필 보기
-    </v-btn>
-
-    <section>
-      <div>동행 내역</div>
-      <div>내역</div>
-      <div>활동한 내역</div>
-    </section>
+    <div class="wrapper pl-4 pr-4">
+      <Profile />
+      <v-btn class="mt-4 w-full">
+        프로필 보기
+      </v-btn>
+      <HistoryButtons />
+      <InfoSections />
+    </div>
+    <BottomBar />
   </div>
 </template>
+
 <script>
 export default {
   name: 'MyInfo',
   components: {
     BaseHeader: () => import('~/components/common/header/BaseHeader.vue'),
     Profile: () => import('~/components/auth/profile/index.vue'),
+    HistoryButtons: () => import('./HistoryButtons.vue'),
+    BottomBar: () => import('~/components/common/bottom-bar'),
+    InfoSections: () => import('./info-sections'),
+  },
+  data () {
+    return {
+
+    }
   },
   methods: {
     handleSettings (settings) {
@@ -45,6 +48,6 @@ export default {
 <style lang='scss'>
 .my-info {
   width: 100%;
-
 }
+
 </style>
