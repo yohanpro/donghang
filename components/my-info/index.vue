@@ -11,14 +11,14 @@
         >
       </div>
     </base-header>
-    <div class="wrapper pl-4 pr-4">
-      <Profile />
-      <v-btn class="mt-4 w-full">
-        프로필 보기
-      </v-btn>
-      <HistoryButtons />
-      <InfoSections />
-    </div>
+
+    <Profile />
+    <v-btn class="mt-4 w-full">
+      프로필 보기
+    </v-btn>
+    <HistoryButtons />
+    <InfoSections />
+
     <BottomBar />
   </div>
 </template>
