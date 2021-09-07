@@ -6,6 +6,6 @@ export default {
   name: 'HhiTemplate',
 }
 </script>
-<style lang='scss'>
+<style lang='scss' scoped>
 
 </style>

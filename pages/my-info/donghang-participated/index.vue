@@ -1,9 +1,9 @@
 <template>
-  <div>MyCountryReply</div>
+  <div>DonghangParticipated</div>
 </template>
 <script>
 export default {
-  name: 'MyCountryReplyPage',
+  name: 'DonghangParticipatedPage',
 }
 </script>
 <style lang='scss' scoped>

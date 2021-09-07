@@ -13,6 +13,6 @@ export default {
   // middleware: 'authenticated',
 }
 </script>
-<style lang='scss'>
+<style lang='scss' scoped>
 
 </style>

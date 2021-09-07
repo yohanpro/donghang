@@ -3,10 +3,10 @@
 </template>
 <script>
 export default {
-  name: 'MyCountryArticle',
+  name: 'MyCountryArticlePage',
 
 }
 </script>
-<style lang='scss'>
+<style lang='scss' scoped>
 
 </style>

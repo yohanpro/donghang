@@ -18,7 +18,6 @@
     </v-btn>
     <HistoryButtons />
     <InfoSections />
-
     <BottomBar />
   </div>
 </template>
@@ -45,9 +44,10 @@ export default {
   },
 }
 </script>
-<style lang='scss'>
+<style lang='scss' scoped>
 .my-info {
   width: 100%;
+  padding-bottom: 6.5rem;
 }
 
 </style>
