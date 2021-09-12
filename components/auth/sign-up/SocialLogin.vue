@@ -32,6 +32,7 @@ export default {
       const payload = {
         token,
       }
+
       await this.handleLogin(payload, vendor)
     },
 

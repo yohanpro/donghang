@@ -1,4 +1,4 @@
-export default async function ({ store, redirect }) {
+export default async function ({ store, redirect }) { // Fixme async
   console.log('middleware 작동')
   const { isAuthenticated, token } = store.state.auth
   let result
