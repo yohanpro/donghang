@@ -10,7 +10,7 @@ export default {
     MyInfo: () => import('~/components/my-info/index.vue'),
   },
   layout: 'with-header',
-  // middleware: 'authenticated',
+  middleware: 'authenticated',
 }
 </script>
 <style lang='scss' scoped>

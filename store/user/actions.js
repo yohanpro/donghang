@@ -4,8 +4,8 @@ export const endpoints = {
 }
 
 export default {
-  async myProfile ({ userId }) {
+  async fetchProfile ({ commit }, userId) {
     const result = await this.$axios.get(endpoints.profile(userId))
-    return result
+    commit('updateProfileObj', result)
   },
 }

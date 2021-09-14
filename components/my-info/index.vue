@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'MyInfo',
@@ -35,14 +35,18 @@ export default {
   },
   data () {
     return {
-
+      myProfile: {},
     }
   },
+  computed: {
+    ...mapState('auth', ['userId']),
+  },
   async created () {
-    await this.myProfile(1)
+    console.log('this.userId', this.userId)
+    this.myProfile = await this.fetchProfile(this.userId)
   },
   methods: {
-    ...mapActions('user', ['myProfile']),
+    ...mapActions('user', ['fetchProfile']),
     handleSettings (settings) {
       console.log('handleSettings', settings)
     },
