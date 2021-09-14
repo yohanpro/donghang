@@ -11,9 +11,8 @@
         >
       </div>
     </base-header>
-
     <Profile />
-    <v-btn class="mt-4 w-full">
+    <v-btn class="ml-auto mr-auto mt-4 w-10/12 d-block">
       프로필 보기
     </v-btn>
     <HistoryButtons />
@@ -23,6 +22,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'MyInfo',
   components: {
@@ -37,7 +38,11 @@ export default {
 
     }
   },
+  async created () {
+    await this.myProfile(1)
+  },
   methods: {
+    ...mapActions('user', ['myProfile']),
     handleSettings (settings) {
       console.log('handleSettings', settings)
     },
@@ -49,5 +54,4 @@ export default {
   width: 100%;
   padding-bottom: 6.5rem;
 }
-
 </style>

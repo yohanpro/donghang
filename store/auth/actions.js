@@ -61,7 +61,6 @@ export default {
     { commit, dispatch },
     { accessToken, activeStatus, userId },
   ) {
-    debugger
     const { PRE_ACTIVE, ACTIVE, NOT_ACTIVE } = ACCOUNT_STATUS
     if (activeStatus === ACTIVE) {
       Cookies.set('donghang-token', accessToken, { expires: 7 })

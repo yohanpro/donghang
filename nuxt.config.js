@@ -18,7 +18,6 @@ switch (process.env.NODE_ENV) {
 dotenv.config({ path })
 
 export default {
-  mode: 'spa',
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
   // Target: https://go.nuxtjs.dev/config-target
