@@ -6,6 +6,6 @@ export const endpoints = {
 export default {
   async fetchProfile ({ commit }, userId) {
     const result = await this.$axios.get(endpoints.profile(userId))
-    commit('updateProfileObj', result)
+    commit('updateProfileObj', result.data)
   },
 }

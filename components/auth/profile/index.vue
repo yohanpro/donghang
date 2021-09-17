@@ -1,6 +1,9 @@
 <template>
   <section class="profile">
-    <div class="verified-user">
+    <div
+      v-show="profileObj.verifiedUser"
+      class="verified-user"
+    >
       <img
         src="~/assets/images/icons/verified.svg"
         alt="인증마크"
@@ -9,28 +12,27 @@
     </div>
     <div class="profile__photo-wrapper">
       <img
-        :src="profileObj.photo"
+        :src="profileObj.userPicture"
         alt="Profile photo"
       >
     </div>
-    <p class="profile__id">
-      {{ profileObj.id }}
+    <p class="profile__nickname">
+      {{ profileObj.nickname }}
     </p>
   </section>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'Profile',
   data () {
     return {
-      profileObj: {
-        name: 'John Doe',
-        id: 'abcd_john',
-        photo:
-          'https://images.unsplash.com/photo-1425082661705-1834bfd09dca?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHw%3D&w=1000&q=80',
-      },
+
     }
+  },
+  computed: {
+    ...mapState('user', ['profileObj']),
   },
 }
 </script>
@@ -60,7 +62,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  &__id {
+  &__nickname {
     font-size: 1rem;
     font-weight: bold;
     text-align: center;
@@ -72,7 +74,6 @@ export default {
     position: relative;
     overflow: hidden;
     margin: 0 auto;
-    background: orange;
     border-radius: 50%;
     img {
       width: auto;

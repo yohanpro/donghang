@@ -32,13 +32,13 @@ export default {
         endpoints.refreshToken,
         refreshTokenPayload,
       )
-      const { accessToken, account_status: accountStatus } = result
+      const { accessToken, account_status: activeStatus } = result
 
       dispatch('handleTokenRetrieve', {
         accessToken,
-        accountStatus,
+        activeStatus,
       })
-      return accountStatus
+      return activeStatus
     } catch (error) {
       return false
     }

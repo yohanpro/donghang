@@ -35,15 +35,14 @@ export default {
   },
   data () {
     return {
-      myProfile: {},
+
     }
   },
   computed: {
     ...mapState('auth', ['userId']),
   },
   async created () {
-    console.log('this.userId', this.userId)
-    this.myProfile = await this.fetchProfile(this.userId)
+    await this.fetchProfile(this.userId)
   },
   methods: {
     ...mapActions('user', ['fetchProfile']),
