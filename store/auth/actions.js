@@ -31,12 +31,14 @@ export default {
       const result = await this.$axios.$post(
         endpoints.refreshToken,
         refreshTokenPayload,
+        { headers: { 'Content-Type': 'application/json' }, withCredentials: true },
       )
-      const { accessToken, account_status: activeStatus } = result
+      const { token, activeStatus, id: userId } = result
 
       dispatch('handleTokenRetrieve', {
-        accessToken,
+        accessToken: token,
         activeStatus,
+        userId,
       })
       return activeStatus
     } catch (error) {
@@ -67,6 +69,7 @@ export default {
       commit('updateIsAuthenticated', true)
     }
     this.$axios.setToken(accessToken, 'Bearer')
+
     commit('updateUserId', userId)
     commit('updateActiveStatus', activeStatus)
   },
