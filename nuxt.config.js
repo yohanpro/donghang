@@ -1,21 +1,4 @@
 import colors from 'vuetify/es5/util/colors'
-import dotenv from 'dotenv'
-
-let path
-
-switch (process.env.NODE_ENV) {
-  case 'production':
-    // eslint-disable-next-line node/no-path-concat
-    path = `${__dirname}/config/env/production.env`
-    break
-  case 'development':
-    // eslint-disable-next-line node/no-path-concat
-    path = `${__dirname}/config/env/development.env`
-    break
-  default:
-    break
-}
-dotenv.config({ path })
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -85,15 +68,15 @@ export default {
     '@nuxtjs/vuetify',
     '@nuxtjs/tailwindcss',
   ],
-
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/dotenv', '@nuxtjs/axios'],
-  env: {
-    ENV: process.env.NODE_ENV,
-    APP_URL: process.env.APP_URL,
-    BASE_URL: process.env.BASE_URL,
-    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
-    GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY,
+  modules: ['@nuxtjs/axios'],
+  publicRuntimeConfig: {
+    baseURL: process.env.BASE_URL,
+    googleClintId: process.env.GOOGLE_CLIENT_ID,
+    googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
+  },
+  privateRuntimeConfig: {
+    googleClientId: process.env.GOOGLE_CLIENT_ID,
   },
   axios: {
     baseUrl: process.env.BASE_URL,
