@@ -92,7 +92,6 @@ export default {
   &__title {
     font-size: 1.3rem;
     font-weight: 500;
-    font-family: 'Khn-heading';
   }
   &__content {
     flex: 1;
@@ -110,7 +109,6 @@ export default {
     align-items: center;
     font-size: 1.25rem;
     margin-right: -1rem;
-    font-family: 'Khn-heading';
     > p > span {
       font-size: 1em;
       color: $greeny-blue;

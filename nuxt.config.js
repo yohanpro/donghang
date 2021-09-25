@@ -79,7 +79,7 @@ export default {
     googleClientId: process.env.GOOGLE_CLIENT_ID,
   },
   axios: {
-    baseUrl: process.env.BASE_URL,
+    baseURL: process.env.BASE_URL,
   },
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {

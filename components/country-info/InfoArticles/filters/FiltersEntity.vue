@@ -52,7 +52,6 @@ export default {
 <style lang="scss" scoped>
 ::v-deep .v-select__slot {
   font-size: 1.3rem;
-  font-family: 'Khn-heading';
   height: 3rem;
 }
 

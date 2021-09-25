@@ -62,7 +62,6 @@ export default {
       }
     }
     & p.label {
-      font-family: 'Khn-heading';
       font-weight: bold;
     }
   }
