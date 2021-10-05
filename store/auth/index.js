@@ -1,4 +1,3 @@
-
 import Cookies from 'js-cookie'
 
 export const mutations = {
@@ -26,8 +25,6 @@ export const state = () => ({
   isAuthenticated: false,
   userId: null,
   token: token || null,
-  userObj: {},
   activeStatus: -1,
   userAgreements: {},
-  userImage: '',
 })
