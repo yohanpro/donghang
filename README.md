@@ -1,5 +1,6 @@
 # myTrip
 
+동행 프로젝트
 ## Build Setup
 
 ```bash
